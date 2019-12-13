@@ -1,17 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
-// import SmokeLogo from "SmokeLogo";
+import Menu from "./pages/Menu"
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          {/* <SmokeLogo /> */}
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Menu /> {/* This will be converted to a route. Just using this to see work */}
       </div>
     );
   }
