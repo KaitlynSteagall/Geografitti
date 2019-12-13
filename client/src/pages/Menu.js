@@ -1,26 +1,26 @@
 import React, { Component } from "react";
 import MenuButton from "../components/MenuButton/MenuButton";
-import {Row, Container } from "../components/Grid";
-
 
 class Menu extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-         <MenuButton>Make New Art</MenuButton>
-        </Row>
-        <Row>
-         <MenuButton>View My Gallery</MenuButton>
-        </Row>
-        <Row>
-         <MenuButton>Edit Account Info</MenuButton>
-        </Row>
-        <Row>
-         <MenuButton>Logout</MenuButton>
-        </Row>
-      </Container>
+      <div className="container">
+        <div className="col-12">
+          <div className="row">
+            <MenuButton>Make New Art</MenuButton>
+          </div>
+          <div className="row">
+            <MenuButton>View My Gallery</MenuButton>
+          </div>
+          <div className="row">
+            <MenuButton>Edit Account Info</MenuButton>
+          </div>
+          <div className="row">
+            <MenuButton>Logout</MenuButton>
+          </div>
+        </div>
+      </div>
     );
   }
 }

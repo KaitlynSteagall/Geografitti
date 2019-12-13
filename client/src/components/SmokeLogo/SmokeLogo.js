@@ -1,11 +1,11 @@
 import React from "react";
-import "./style.css";
-import video from "../../assets/smoke.mp4"
+import "./SmokeLogo.css";
+import video from "../../assets/smoke.mp4";
 
-function SmokeLogo(props) {
+function SmokeLogo() {
   return (
   <section>
-    <video src={video} autoplay muted></video>
+    <video src={video} autoPlay muted></video>
     <h1>
       <span>G</span>
       <span>E</span>

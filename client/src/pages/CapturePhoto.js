@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
 
-class CapturePhoto extends Component {
+// class CapturePhoto extends Component {
 
-  render() {
-    return (
+//   render() {
+//     return (
 
-    );
-  }
-}
+//     );
+//   }
+// }
 
-export default CapturePhoto;
+// export default CapturePhoto;
