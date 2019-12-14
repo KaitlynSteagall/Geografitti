@@ -5,8 +5,8 @@
 //   render() {
 //     return (
 
-//     );
-//   }
-// }
+    )
+  }
+}
 
 // export default CapturePhoto;
