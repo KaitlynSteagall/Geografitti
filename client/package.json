@@ -9,8 +9,13 @@
     "react": "^16.6.3",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.6.3",
+<<<<<<< HEAD
     "react-scripts": "^2.1.1",
     "react-sketch": "^0.5.1"
+=======
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^2.1.1"
+>>>>>>> ff9db605a8e84d6f3cc14f6fe15c5093a1a9170f
   },
   "scripts": {
     "start": "react-scripts start",
