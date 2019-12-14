@@ -31,7 +31,7 @@ export const usePosition = () => {
       return;
     }
     // watchposition is provided by the geolocation service
-    watcher = geo.watchPosition(onChange, onError);
+    let watcher = geo.watchPosition(onChange, onError);
     return () => geo.clearWatch(watcher);
   }, []);
 
