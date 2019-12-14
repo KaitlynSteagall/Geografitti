@@ -38,4 +38,3 @@ import * as firebaseui from "firebaseui";
   }
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
