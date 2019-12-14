@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
 
-class NotFound extends Component {
+// class NotFound extends Component {
 
-  render() {
-    return (
+//   render() {
+//     return (
 
-    );
-  }
-}
+//     );
+//   }
+// }
 
-export default NotFound;
+// export default NotFound;
