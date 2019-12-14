@@ -4,7 +4,7 @@ import {usePosition} from './usePosition';
 
 // this particular component just makes a div that asks the device where it is and displays it to the user in text
 
-export const WhereAmI = () => {
+const WhereAmI = () => {
   // functional with hook because Classes Are Hard For Humans And Computers
   const {latitude, longitude, error} = usePosition();
   return (
@@ -15,3 +15,5 @@ export const WhereAmI = () => {
     </div>
   );
 };
+
+export default WhereAmI;
