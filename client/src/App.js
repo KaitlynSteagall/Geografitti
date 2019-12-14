@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-// import Login from "./pages/Login"
+// import Login from "./pages/Login/Login"
 import Menu from "./pages/Menu"
 // import CapturePhoto from "./pages/CapturePhoto"
 import EditPhoto from "./pages/EditPhoto"
