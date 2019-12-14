@@ -18,8 +18,8 @@ class EditPhoto extends React.Component {
        />
       </div>
 
-//     );
-//   }
-// }
+    );
+  }
+}
 
-// export default EditPhoto;
+export default EditPhoto;
