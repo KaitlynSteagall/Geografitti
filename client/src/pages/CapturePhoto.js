@@ -5,7 +5,7 @@ class CapturePhoto extends Component {
   render() {
     return (
 
-    );
+    )
   }
 }
 
