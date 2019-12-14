@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-// import Login from "./pages/Login/Login"
+import Login from "./pages/Login/Login"
 import Menu from "./pages/Menu"
 // import CapturePhoto from "./pages/CapturePhoto"
 import EditPhoto from "./pages/EditPhoto"
@@ -15,7 +15,7 @@ class App extends Component {
       <Router>
         <div>
           <Switch>
-            {/* <Route exact path="/" component={Login} /> */}
+            <Route exact path="/" component={Login} />
             <Route exact path="/Menu" component={Menu} />
             {/* <Route exact path="/Take-Photo" component={CapturePhoto} /> */}
             <Route exact path="/Create-Art" component={EditPhoto} />
