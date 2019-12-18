@@ -1,6 +1,9 @@
-import React from "react"; 
+import React from "react";
 import {SketchField, Tools} from "react-sketch"; 
-import ToolButton from "../ToolButton"; 
+import { CompactPicker} from "react-color"; 
+import style from "./style.css"
+
+
 
 
 class TagArea extends React.Component {
@@ -10,13 +13,13 @@ class TagArea extends React.Component {
     this.state={
       lineWidth: 10,
       lineColor: 'black',
-      fillColor: '#68CCCA',
+      fillColor: 'transparent',
       backgroundColor: 'transparent',
       shadowWidth: 0,
       shadowOffset: 0,
-      tool: Tools.Circle,
+      tool: Tools.Pencil,
       enableRemoveSelected: false,
-      fillWithColor: false,
+      fillWithColor: true,
       fillWithBackgroundColor: false,
       drawings: [],
       canUndo: false,
@@ -42,7 +45,13 @@ class TagArea extends React.Component {
     };
   }
 
-  selectTool = event => {
+  save = () => {
+    let drawings = this.state.drawings; 
+    drawings.push(this.tag.toDataUrl()); 
+    this.setState({drawings: drawings}); 
+  }
+
+   selectTool = event => {
     this.setState({
       tool: event.target.value,
       enableRemoveSelected: event.target.value === Tools.Select,
@@ -50,7 +59,7 @@ class TagArea extends React.Component {
     });
   };
 
-  _undo = () => {
+   undo = () => {
     console.log("nada")
     this.tag.undo();
     this.setState({
@@ -58,6 +67,15 @@ class TagArea extends React.Component {
       canRedo: this.tag.canRedo(),
     });
   };
+
+  redo = () =>{
+    console.log("triggering")
+    this.tag.redo(); 
+    this.setState({
+      canRedo: this.tag.canRedo(),
+      canUndo: this.tag.canUndo(),
+    }); 
+  }; 
 
   onTagChange = () =>{
     console.log("working!")
@@ -98,41 +116,85 @@ class TagArea extends React.Component {
  
   render() {
      return (
-         <div className='container'>
+         <div className='container col-lg-12'>
            <SketchField
-           ref={c => (this.tag = c)}
+           className='canvas-area'
+         ref={c => (this.tag = c)}
          width='800px'
          height='800px'
          tool={this.state.tool}
          lineColor={this.state.lineColor}
          onChange={this.onTagChange}
+         fillColor={this.state.fillColor}
          />
-         <span>
-         <ToolButton 
-         
-         onClick={this.selectTool}
-         value={Tools.Pencil}
          
          
+
          
-         
-         
-          />
-         </span>
-         <button
+           <button
          className="btn btn-primary"
          onClick={this.selectTool}
          value={Tools.Pencil}
          >Change to Pencil</button>
+
+         <button 
+         className="btn btn-success"
+         onClick={this.selectTool}
+         value={Tools.Line}
+         >Line</button>
+
+         <button 
+         className="btn btn-success"
+         onClick={this.selectTool}
+         value={Tools.Rectangle}
+         >Rectangle</button>
          <button
-         onClick={this._undo}
+         className="btn btn-primary"
+         onClick={this.selectTool}
+         value={Tools.Pan}
+         >Pan</button>
+
+
+         <button 
+         className="btn btn-success"
+         onClick={this.selectTool}
+         value={Tools.Select}
+         >Select</button>
+
          
-         />Undo working
-         <span>
-           
-           
-         </span>
+         
+         <button
+         className="btn btn-danger"
+         onClick={this.undo}
+         
+         >Undo</button>
+         <button
+         className="btn btn-success"
+         onClick={this.redo}
+         >Redo</button>
+
+         <button 
+         className= "btn btn-primary"
+         onClick={this.save}
+         >Save it!</button>
+
+
+         <button 
+         classnName="btn btn-danger"
+         onClick={this.download}
+         >Download</button>
+          
+
+          <CompactPicker
+           color={this.state.lineColor}
+           value={this.state.lineColor}
+           onChange={(color) => this.setState({lineColor: color.hex})}/>
          </div>
+          
+         
+         
+         
+
          
      )
   }
