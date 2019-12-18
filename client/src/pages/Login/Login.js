@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 import avatar from "../../assets/splash.jpg"
+import {Link, BrowserRouter as Router } from 'react-router-dom'
 
 
 class Login extends Component {
@@ -17,8 +18,8 @@ class Login extends Component {
 								<input type="username" name="username" id="inputUname" class="form-control form-group" placeholder="username" required autofocus />
 								<input type="password" name="password" id="inputPassword" class="form-control form-group" placeholder="password" required autofocus />
 								<button className="btn btn-primary" type="button" enabled>
-									<span role="status" aria-hidden="true" />
-									Enter
+									<span role="status" aria-hidden="true" /><Link to="/Menu">
+									Enter</Link>
 								</button>
 								<button className="btn btn-primary ml-2" type="button" enabled>
 									<span aria-hidden="true" />
