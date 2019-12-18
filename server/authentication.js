@@ -2,14 +2,14 @@ import firebase from "firebase";
 import * as firebaseui from "firebaseui";
 
   var firebaseConfig = {
-    apiKey: "AIzaSyCvv26-BN_R7mqNlcks2OPIULLyU2JkyuE",
-    authDomain: "geograffiti-f27b5.firebaseapp.com",
-    databaseURL: "https://geograffiti-f27b5.firebaseio.com",
-    projectId: "geograffiti-f27b5",
-    storageBucket: "geograffiti-f27b5.appspot.com",
-    messagingSenderId: "900938893685",
-    appId: "1:900938893685:web:1d618c2ebefe5678352b3c",
-    measurementId: "G-R23BNYJS0E"
+    apiKey: process.env.API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DB_URL,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.SENDER_ID,
+    appId: process.env.APP_ID,
+    measurementId: process.env.MEASUREMENT_ID
   };
 
   var app = firebase.initializeApp(firebaseConfig);
