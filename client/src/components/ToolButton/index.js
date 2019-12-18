@@ -1,25 +1,16 @@
-import React from "react"; 
-import {Tools} from "react-sketch"; 
+import React from "react";
+import { Tools } from "react-sketch";
 
+function Toolbutton(props) {
 
-
-
-  function Toolbutton(props){
-
-  
-    return(
-      
-      <button 
+  return (
+    <button
       className="btn btn-primary"
       onClick={props.selectTool}
-      value={Tools.Pencil}
-      >testbutton</button>
-      
-    ); 
-  }
-  
-
-
-
+      value={Tools.Pencil}>
+      testbutton
+    </button>
+  );
+}
 
 export default Toolbutton; 

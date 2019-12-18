@@ -5,7 +5,7 @@ import "./MenuButton.css";
 // That way we don't have to define them all individually
 function MenuButton(props) {
   return (
-    <button className="btn mx-auto mt-3" {...props} role="button">
+    <button className="btn btn-primary mx-auto mt-3" {...props} role="button">
     </button>
   );
 }

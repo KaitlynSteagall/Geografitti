@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import Camera from "../components/Camera/Camera"
+// import Camera from "../components/Camera/Camera"
 
 class CapturePhoto extends Component {
 
   render() {
     return (
-      <div>
-        <Camera />
-        <div>
-          <i className="far fa-circle"></i>
-        </div>
+      <div className="container">
+        {/* <Camera /> */}
+        <button>
+          <span><i className="far fa-circle"></i></span>
+        </button>
       </div>
     )
   }
