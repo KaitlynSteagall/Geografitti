@@ -44,12 +44,18 @@ class TagArea extends React.Component {
       
     };
   }
-
-  save = () => {
+  save = () =>{
     let drawings = this.state.drawings; 
-    drawings.push(this.tag.toDataUrl()); 
-    this.setState({drawings: drawings}); 
-  }
+    drawings.push(this.tag.toDataURL()); 
+    this.setState({ drawings: drawings}); 
+    console.log("gaaa")
+    console.log(drawings); 
+    // Need to add the post route here!
+  }; 
+
+  download = () => {
+    
+  }; 
 
    selectTool = event => {
     this.setState({
@@ -118,6 +124,7 @@ class TagArea extends React.Component {
      return (
          <div className='container col-lg-12'>
            <SketchField
+           id='tagArea'
            className='canvas-area'
          ref={c => (this.tag = c)}
          width='800px'
@@ -180,6 +187,7 @@ class TagArea extends React.Component {
 
 
          <button 
+         id="download"
          classnName="btn btn-danger"
          onClick={this.download}
          >Download</button>
