@@ -39,7 +39,8 @@ class Portfolio extends Component {
         <GalleryImage objectFit="contain" key={image} src={image} />
       ))}
     </Gallery>
-  );
+    );
+  }
 }
 
 const rootElement = document.getElementById("root");
