@@ -5,7 +5,7 @@ import Login from "./pages/Login/Login"
 import Menu from "./pages/Menu"
 import CapturePhoto from "./pages/CapturePhoto"
 import EditPhoto from "./pages/EditPhoto"
-// import Portfolio from "./pages/Portfolio"
+// import Portfolio from "./pages/Portfolio/Portfolio"
 // import EditUser from "./pages/EditUser"
 
 

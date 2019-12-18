@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import MenuButton from "../components/MenuButton/MenuButton";
+import {Link, BrowserRouter as Router } from "react-router-dom"
 
 class Menu extends Component {
 
@@ -8,16 +9,16 @@ class Menu extends Component {
       <div className="container">
         <div className="col-12">
           <div className="row">
-            <MenuButton>Make New Art</MenuButton>
+            <MenuButton><Link to="/Take-Photo">Make New Art</Link></MenuButton>
           </div>
           <div className="row">
-            <MenuButton>View My Gallery</MenuButton>
+            <MenuButton><Link to="/Portfolio">View My Gallery</Link></MenuButton>
           </div>
           <div className="row">
-            <MenuButton>Edit Account Info</MenuButton>
+            <MenuButton><Link to="/Edit-Account-Info">Edit Account Info</Link></MenuButton>
           </div>
           <div className="row">
-            <MenuButton>Logout</MenuButton>
+            <MenuButton><Link to="/">Logout</Link></MenuButton>
           </div>
         </div>
       </div>
