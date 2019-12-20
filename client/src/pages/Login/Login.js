@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import './style.css';
 import {Link, BrowserRouter as Router } from "react-router-dom";
 
-
 class Login extends Component {
   state = { 
     signIn: "active-dx",
@@ -42,11 +41,8 @@ class Login extends Component {
           />
           <input type='password' placeholder='Insert Password' reqired />
           <input type='password' placeholder='Verify Password' reqired />
-          <button className="form-btn sx log-in " onClick={this.onLoginClick} type='button'>
-            Log In
-          </button>
-          <button className='form-btn dx' type='submit'>
-            Sign Up
+          <button className="form-btn sx log-in w-100 " onClick={this.onLoginClick} type='button'>
+           Create Account &amp; Login
           </button>
         </form>
         <form className={"signIn " + this.state.signIn}>
@@ -67,7 +63,7 @@ class Login extends Component {
           />
           <input type='password' placeholder='Insert Password' reqired />
           <button className="form-btn sx back " onClick={this.onBackClick} type='button'>
-            Back
+           Sign Up
           </button>
           <button className='form-btn dx' type='submit'>
             <Link to="/Menu" style={{color:"white"}}>Log In</Link>
