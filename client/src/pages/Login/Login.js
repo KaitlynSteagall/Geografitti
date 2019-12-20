@@ -1,10 +1,24 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 import React, { Component } from 'react';
 import './style.css';
-// import $ from 'jquery';
-import {Link, BrowserRouter as Router } from "react-router-dom"
 
 class Login extends Component {
+  state = { 
+    signIn: "active-dx",
+    signUp: "inactive-sx" 
+  }
+  onLoginClick = () => { 
+    this.setState({ 
+    signIn: "active-dx",
+    signUp: "inactive-sx" 
+  })
+  } 
+  onBackClick = () => {
+    this.setState({
+      signIn: "inactive-dx",
+      signUp: "active-sx" 
+    })
+  }
 
   render () {
     return (
