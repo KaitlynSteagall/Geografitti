@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import TagArea from "../components/Canvas";
+
  
 
 
@@ -16,6 +17,7 @@ class EditPhoto extends React.Component {
         
 
        />
+       
       </div>
 
     );

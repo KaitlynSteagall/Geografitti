@@ -1,7 +1,8 @@
 import React from "react";
 import {SketchField, Tools} from "react-sketch"; 
 import { CompactPicker} from "react-color"; 
-import style from "./style.css"
+import {fabric} from "fabric"; 
+import ToolModal from "../ToolModal"; 
 
 
 
@@ -15,8 +16,8 @@ class TagArea extends React.Component {
       lineColor: 'black',
       fillColor: 'transparent',
       backgroundColor: 'transparent',
-      shadowWidth: 0,
-      shadowOffset: 0,
+      shadowWidth: 10,
+      shadowOffset: 10,
       tool: Tools.Pencil,
       enableRemoveSelected: false,
       fillWithColor: true,
@@ -41,14 +42,21 @@ class TagArea extends React.Component {
       expandControlled: false,
       text: 'a text, cool!',
       enableCopyPaste: false,
+      show: false
       
     };
   }
+
+  showModal = e => {
+    this.setState({
+      show: true, 
+    }); 
+
+  }; 
   save = () =>{
     let drawings = this.state.drawings; 
     drawings.push(this.tag.toDataURL()); 
     this.setState({ drawings: drawings}); 
-    console.log("gaaa")
     console.log(drawings); 
     // Need to add the post route here!
   }; 
@@ -142,6 +150,7 @@ class TagArea extends React.Component {
          className="btn btn-primary"
          onClick={this.selectTool}
          value={Tools.Pencil}
+         shadowOffset= '10'
          >Change to Pencil</button>
 
          <button 
@@ -151,19 +160,19 @@ class TagArea extends React.Component {
          >Line</button>
 
          <button 
-         className="btn btn-success"
+         className="btn btn-primary"
          onClick={this.selectTool}
          value={Tools.Rectangle}
          >Rectangle</button>
          <button
-         className="btn btn-primary"
+         className="btn btn-success"
          onClick={this.selectTool}
          value={Tools.Pan}
          >Pan</button>
 
 
          <button 
-         className="btn btn-success"
+         className="btn btn-primary"
          onClick={this.selectTool}
          value={Tools.Select}
          >Select</button>
@@ -171,17 +180,17 @@ class TagArea extends React.Component {
          
          
          <button
-         className="btn btn-danger"
+         className="btn btn-success"
          onClick={this.undo}
          
          >Undo</button>
          <button
-         className="btn btn-success"
+         className="btn btn-primary"
          onClick={this.redo}
          >Redo</button>
 
          <button 
-         className= "btn btn-primary"
+         className= "btn btn-success"
          onClick={this.save}
          >Save it!</button>
 
@@ -197,6 +206,12 @@ class TagArea extends React.Component {
            color={this.state.lineColor}
            value={this.state.lineColor}
            onChange={(color) => this.setState({lineColor: color.hex})}/>
+
+           
+
+           
+
+           
          </div>
           
          
