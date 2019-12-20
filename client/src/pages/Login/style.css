@@ -15,7 +15,7 @@ body {
 .container{
 	position:absolute;
 	width: auto;
-	height:auto;
+	height: auto;
 	top: calc(50% - 240px);
 	left: calc(50% - 160px);
 }

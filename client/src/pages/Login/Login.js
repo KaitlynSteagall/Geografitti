@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import './style.css';
 
-
 class Login extends Component {
   state = { 
     signIn: "active-dx",
@@ -69,7 +68,7 @@ class Login extends Component {
             Back
           </button>
           <button className='form-btn dx' type='submit'>
-            Log In
+            <Link to="/Menu" style={{color:"white"}}>Log In</Link>
           </button>
         </form>
       </div>
