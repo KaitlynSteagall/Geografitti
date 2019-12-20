@@ -1,47 +1,10 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 import React, { Component } from 'react';
 import './style.css';
-<<<<<<< HEAD
 // import $ from 'jquery';
 import {Link, BrowserRouter as Router } from "react-router-dom"
 
 class Login extends Component {
-  // componentDidMount () {
-  //   $('.log-in').click(function () {
-  //     $('.signIn').addClass('active-dx')
-  //     $('.signUp').addClass('inactive-sx')
-  //     $('.signUp').removeClass('active-sx')
-  //     $('.signIn').removeClass('inactive-dx')
-  //   })
-
-  //   $('.back').click(function () {
-  //     $('.signUp').addClass('active-sx')
-  //     $('.signIn').addClass('inactive-dx')
-  //     $('.signIn').removeClass('active-dx')
-  //     $('.signUp').removeClass('inactive-sx')
-  //   })
-  // }
-=======
-
-
-class Login extends Component {
-  state = { 
-    signIn: "active-dx",
-    signUp: "inactive-sx" 
-  }
-  onLoginClick = () => { 
-    this.setState({ 
-    signIn: "active-dx",
-    signUp: "inactive-sx" 
-  })
-  } 
-  onBackClick = () => {
-    this.setState({
-      signIn: "inactive-dx",
-      signUp: "active-sx" 
-    })
-  }
->>>>>>> b2f52378cd70210ae98e549483c63e0ffd8417de
 
   render () {
     return (
