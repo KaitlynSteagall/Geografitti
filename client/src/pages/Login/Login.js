@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 import React, { Component } from 'react';
 import './style.css';
+import {Link, BrowserRouter as Router } from "react-router-dom";
 
 class Login extends Component {
   state = { 
@@ -40,12 +41,12 @@ class Login extends Component {
           />
           <input type='password' placeholder='Insert Password' reqired />
           <input type='password' placeholder='Verify Password' reqired />
-          <button className="form-btn sx log-in " onClick={this.onLoginClick} type='button'>
-            Log In
+          <button className="form-btn sx log-in w-100 " onClick={this.onLoginClick} type='button'>
+           Create Account &amp; Login
           </button>
-          <button className='form-btn dx' type='submit'>
+          {/* <button className='form-btn dx' type='submit'>
             Sign Up
-          </button>
+          </button> */}
         </form>
         <form className={"signIn " + this.state.signIn}>
           <h3>
@@ -65,7 +66,7 @@ class Login extends Component {
           />
           <input type='password' placeholder='Insert Password' reqired />
           <button className="form-btn sx back " onClick={this.onBackClick} type='button'>
-            Back
+           Sign Up
           </button>
           <button className='form-btn dx' type='submit'>
             <Link to="/Menu" style={{color:"white"}}>Log In</Link>
