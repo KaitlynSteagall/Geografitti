@@ -116,12 +116,6 @@ button.form-btn.sx.back:hover {
 	color: #fff;
 }
 
-button.form-btn.dx {
-	right: 0;
-	border-radius: 0 0 5px 0;
-	background-color: #ff7d00;
-	color: #fff;
-}
 
 input {
 	border: none;

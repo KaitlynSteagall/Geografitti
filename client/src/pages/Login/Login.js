@@ -44,9 +44,6 @@ class Login extends Component {
           <button className="form-btn sx log-in w-100 " onClick={this.onLoginClick} type='button'>
            Create Account &amp; Login
           </button>
-          {/* <button className='form-btn dx' type='submit'>
-            Sign Up
-          </button> */}
         </form>
         <form className={"signIn " + this.state.signIn}>
           <h3>
