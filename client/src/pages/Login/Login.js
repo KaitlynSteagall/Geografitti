@@ -1,24 +1,25 @@
 /* eslint-disable react/jsx-no-duplicate-props */
-import React, { Component } from 'react'
-import './style.css'
-import $ from 'jquery'
+import React, { Component } from 'react';
+import './style.css';
+// import $ from 'jquery';
+import {Link, BrowserRouter as Router } from "react-router-dom"
 
 class Login extends Component {
-  componentDidMount () {
-    $('.log-in').click(function () {
-      $('.signIn').addClass('active-dx')
-      $('.signUp').addClass('inactive-sx')
-      $('.signUp').removeClass('active-sx')
-      $('.signIn').removeClass('inactive-dx')
-    })
+  // componentDidMount () {
+  //   $('.log-in').click(function () {
+  //     $('.signIn').addClass('active-dx')
+  //     $('.signUp').addClass('inactive-sx')
+  //     $('.signUp').removeClass('active-sx')
+  //     $('.signIn').removeClass('inactive-dx')
+  //   })
 
-    $('.back').click(function () {
-      $('.signUp').addClass('active-sx')
-      $('.signIn').addClass('inactive-dx')
-      $('.signIn').removeClass('active-dx')
-      $('.signUp').removeClass('inactive-sx')
-    })
-  }
+  //   $('.back').click(function () {
+  //     $('.signUp').addClass('active-sx')
+  //     $('.signIn').addClass('inactive-dx')
+  //     $('.signIn').removeClass('active-dx')
+  //     $('.signUp').removeClass('inactive-sx')
+  //   })
+  // }
 
   render () {
     return (
@@ -68,7 +69,7 @@ class Login extends Component {
             Back
           </button>
           <button className='form-btn dx' type='submit'>
-            Log In
+            <Link to="/Menu" style={{color:"white"}}>Log In</Link>
           </button>
         </form>
       </div>
@@ -76,4 +77,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default Login;

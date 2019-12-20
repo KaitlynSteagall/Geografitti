@@ -8,14 +8,14 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-image: url("./assets/logincity.jpg");
+  background-image: url("../../assets/logincity.jpg");
 }
 
 
 .container{
 	position:absolute;
 	width: auto;
-	height:auto;
+	height: auto;
 	top: calc(50% - 240px);
 	left: calc(50% - 160px);
 }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link, BrowserRouter as Router } from "react-router-dom"
 // import Camera from "../components/Camera/Camera"
 
 class CapturePhoto extends Component {
@@ -7,8 +8,8 @@ class CapturePhoto extends Component {
     return (
       <div className="container">
         {/* <Camera /> */}
-        <button>
-          <span><i className="far fa-circle"></i></span>
+        <button style={{backgroundColor:"transparent", border:"none"}}>
+          <Link to="Create-Art" style={{color:"white", fontSize:"2em"}}><i className="far fa-circle"></i></Link>
         </button>
       </div>
     )
