@@ -96,7 +96,7 @@ button.form-btn {
 button.form-btn.sx {
 	left: 0;
 	border-radius: 0 0 0 5px;
-	background-color: rgba(255, 125, 0, 0.35);
+	background-color: #ff7d00;
 	color: #fff;
 	transition:all 0.3s linear;
 }
