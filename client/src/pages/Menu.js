@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MenuButton from "../components/MenuButton/MenuButton";
-import {Link, BrowserRouter as Router } from "react-router-dom"
+import {Link, BrowserRouter as Router } from "react-router-dom";
 
 class Menu extends Component {
 
