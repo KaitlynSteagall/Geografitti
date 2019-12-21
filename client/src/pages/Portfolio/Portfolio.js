@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Gallery, GalleryImage } from "react-gesture-gallery";
 
+
 const images = [
   "./assets/logincity.jpg",
   "./assets/splash.jpg",

@@ -1,5 +1,5 @@
 body {
-  background-image: url("./assets/blankbillboard.png");
+  background-image: url("./assets/blankbillboard.png") !important;
 }
 
 .Portfolio {

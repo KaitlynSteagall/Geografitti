@@ -6,7 +6,7 @@ import Menu from "./pages/Menu"
 import CapturePhoto from "./pages/CapturePhoto"
 import EditPhoto from "./pages/EditPhoto"
 // import Portfolio from "./pages/Portfolio/Portfolio"
-// import EditUser from "./pages/EditUser"
+import EditUser from "./pages/EditUser/EditUser"
 
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
             <Route exact path="/Take-Photo" component={CapturePhoto} />
             <Route exact path="/Create-Art" component={EditPhoto} />
             {/* <Route exact path="/Portfolio" component={Portfolio} /> */}
-            {/* <Route exact path="/Edit-Account-Info" component={EditUser} /> */}
+            <Route exact path="/Edit-Account-Info" component={EditUser} />
             {/* <Route component={NotFound} /> */}
           </Switch>
         </div>
