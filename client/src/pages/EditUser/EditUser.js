@@ -47,16 +47,6 @@ class EditUser extends React.Component {
               placeholder='username'
             />
           </div>
-          <div className='form-check'>
-            <input
-              type='checkbox'
-              className='form-check-input'
-              id='exampleCheck1'
-            />
-            <label className='form-check-label' for='exampleCheck1'>
-              Check me out
-            </label>
-          </div>
           <button type='submit' className='btn btn-primary'>
             Submit
           </button>
