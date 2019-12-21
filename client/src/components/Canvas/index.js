@@ -1,7 +1,6 @@
 import React from "react";
 import {SketchField, Tools} from "react-sketch"; 
 import { CompactPicker} from "react-color"; 
-import {fabric} from "fabric"; 
 import ToolModal from "../ToolModal"; 
 
 
