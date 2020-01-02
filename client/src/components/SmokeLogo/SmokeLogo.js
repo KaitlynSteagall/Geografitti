@@ -9,7 +9,7 @@ class SmokeLogo extends Component {
   }
 
   componentDidMount() {
-    this.id = setTimeout(() => this.setState({ redirect: true }), 10500)
+    this.id = setTimeout(() => this.setState({ redirect: true }), 9000)
   }
 
   componentWillUnmount() {
