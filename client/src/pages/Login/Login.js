@@ -62,10 +62,12 @@ class Login extends Component {
             reqired
           />
           <input type='password' placeholder='Insert Password' reqired />
-          <button className="form-btn sx back " onClick={this.onBackClick} type='button'>
+          <button className="form-btn sx back " 
+          onClick={this.onBackClick} type='button'>
            Sign Up
           </button>
-          <button className='form-btn dx' type='submit'>
+          <button className='form-btn dx ' 
+          type='submit'>
             <Link to="/Menu" style={{color:"white"}}>Log In</Link>
           </button>
         </form>
