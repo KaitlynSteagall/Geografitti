@@ -1,7 +1,24 @@
 import React, { Component } from 'react'
-import './style.css'
 
 class EditUser extends React.Component {
+  state =  {
+    userEmail: "",
+    userName: "",
+    userPassword: ""
+
+    }
+    handleEmailChange = (event) => {
+      const value = event.target.value;
+      this.setState({userEmail:value}) 
+    }  
+     handleNameChange = (event) => {
+      const value = event.target.value;
+      this.setState({userName:value}) 
+    } 
+     handlePasswordChange = (event) => {
+      const value = event.target.value;
+      this.setState({userPassword:value}) 
+    } 
   render () {
     return (
       <div className='container'>
@@ -17,8 +34,9 @@ class EditUser extends React.Component {
         ></div>
         <form>
           <div className='form-group'>
-            <label for='exampleInputEmail1'>Email address</label>
-            <input
+            <label>Email address</label>
+            <input value={this.state.userEmail} 
+             onChange={this.handleEmailChange}
               type='email'
               className='form-control'
               id='exampleInputEmail1'
@@ -30,8 +48,9 @@ class EditUser extends React.Component {
             </small>
           </div>
           <div className='form-group'>
-            <label for='exampleInputPassword1'>Password</label>
-            <input
+            <label>Password</label>
+            <input value={this.state.userPassword} 
+             onChange={this.handlePasswordChange}
               type='password'
               className='form-control'
               id='exampleInputPassword1'
@@ -39,8 +58,9 @@ class EditUser extends React.Component {
             />
           </div>
           <div className='form-group'>
-            <label for='exampleInputUsername1'>Username</label>
-            <input
+            <label>Username</label>
+            <input value={this.state.userName} 
+             onChange={this.handleNameChange}
               type='username'
               className='form-control'
               id='exampleInputUsername1'
