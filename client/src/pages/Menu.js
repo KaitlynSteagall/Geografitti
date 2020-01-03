@@ -21,7 +21,7 @@ class Menu extends Component {
             <MenuButton><Link to="/edit-account-info" style={{ color: "white" }}>Edit Account Info</Link></MenuButton>
           </div>
           <div className="row">
-            <MenuButton><Link to="/" style={{ color: "white" }}>Logout</Link></MenuButton>
+            <MenuButton><Link to="/login" style={{ color: "white" }}>Logout</Link></MenuButton>
           </div>
         </div>
       </div>
