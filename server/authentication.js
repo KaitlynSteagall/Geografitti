@@ -1,7 +1,6 @@
 import firebase from "firebase";
 import * as firebaseui from "firebaseui";
 
-
   var firebaseConfig = {
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,

@@ -68,7 +68,7 @@ class Login extends Component {
           </button>
           <button className='form-btn dx ' 
           type='submit'>
-            <Link to="/Menu" style={{color:"white"}}>Log In</Link>
+            <Link to="/menu" style={{color:"white"}}>Log In</Link>
           </button>
         </form>
       </div>

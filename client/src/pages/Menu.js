@@ -6,22 +6,22 @@ class Menu extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="col-12">
+      <div className="container mt-5 ml-4">
+        <div className="col-12 mt-5">
           <div className="row">
-            <MenuButton><Link to="/view-art" style={{ color: "white" }}>Search Art In Your Area</Link></MenuButton>
+            <MenuButton><Link to="/view-art" style={{ color: "black" }}>Search Art In Your Area</Link></MenuButton>
           </div>
           <div className="row">
-            <MenuButton><Link to="/take-photo" style={{ color: "white" }}>Make New Art</Link></MenuButton>
+            <MenuButton><Link to="/take-photo" style={{ color: "black" }}>Make New Art</Link></MenuButton>
           </div>
           <div className="row">
-            <MenuButton><Link to="/portfolio" style={{ color: "white" }}>View My Gallery</Link></MenuButton>
+            <MenuButton><Link to="/portfolio" style={{ color: "black" }}>View My Gallery</Link></MenuButton>
           </div>
           <div className="row">
-            <MenuButton><Link to="/edit-account-info" style={{ color: "white" }}>Edit Account Info</Link></MenuButton>
+            <MenuButton><Link to="/edit-account-info" style={{ color: "black" }}>Edit Account Info</Link></MenuButton>
           </div>
           <div className="row">
-            <MenuButton><Link to="/login" style={{ color: "white" }}>Logout</Link></MenuButton>
+            <MenuButton><Link to="/login" style={{ color: "black" }}>Logout</Link></MenuButton>
           </div>
         </div>
       </div>
