@@ -8,6 +8,7 @@ function Photo (props) {
   function handleTakePhoto (dataUri) {
     console.log(dataUri); 
     console.log('takePhoto');
+    // Post route needs to go here. need to post the datauri to firebase user authentication. 
   }
 
 
