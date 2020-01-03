@@ -1,11 +1,12 @@
 import React from "react";
-import React from "react";
+
 import Photo from "../components/Camera"; 
+
 
  
 
 
-class EditPhoto extends React.Component {
+class CapturePhoto extends React.Component {
   
   
   
@@ -25,29 +26,29 @@ class EditPhoto extends React.Component {
   }
 }
 
-export default EditPhoto;
+export default CapturePhoto;
 
  
 
 
-class CapturePhoto extends React.Component {
+// class CapturePhoto extends React.Component {
   
   
   
 
-  render() {
+//   render() {
     
-    return (
-      <div>
-        <TagArea
+//     return (
+//       <div>
+//         <TagArea
         
 
-       />
+//        />
        
-      </div>
+//       </div>
 
-    );
-  }
-}
+//     );
+//   }
+// }
 
-export default CapturePhoto;
+// export default CapturePhoto;

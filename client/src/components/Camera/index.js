@@ -1,28 +1,26 @@
-import React, { useState } from "react"; 
-import Camera  from "react-html5-camera-photo";
-import ImagePreview from "./imagepreview";  
+import React from "react"; 
+import Camera, {FACING_MODES, IMAGE_TYPES}  from "react-html5-camera-photo"; 
+import 'react-html5-camera-photo/build/css/index.css';
 
 function Photo (props) {
-  const [dataUri, setDataUri] = useState(''); 
+  
 
-  function takePhotoAnims(dataUri) {
-    console.log('take photo'); 
-    setDataUri(dataUri); 
+  function handleTakePhoto (dataUri) {
+    console.log(dataUri); 
+    console.log('takePhoto');
   }
 
-  const isFullscreen = false; 
+
+  const isFullscreen = true; 
   return (
-    <div>
-      {
-        (dataUri)
-        ? <ImagePreview dataUri={dataUri}
-        isFullscreen={isFullscreen}
-        />
-        : <Camera on takePhotoAnims = {takePhotoAnims}
-        isFullscreen={isFullscreen}
-        />
-      }
-    </div>
+    <Camera 
+    idealFacingMode= {FACING_MODES.ENVIRONMENT}
+    onTakePhoto = { (dataUri) => { handleTakePhoto(dataUri); } }
+    imageType = {IMAGE_TYPES.PNG}
+    isImageMirror = {true}
+    isMaxResolution = {true}
+    isSilentMode = {true}
+    />
   ); 
 }
 

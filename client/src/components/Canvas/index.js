@@ -2,7 +2,9 @@ import React from "react";
 import {SketchField, Tools} from "react-sketch"; 
 import { CompactPicker} from "react-color"; 
 import {fabric} from "fabric"; 
+import dataUri from "../Camera/index"; 
 import ToolModal from "../ToolModal"; 
+
 
 
 
@@ -33,7 +35,7 @@ class TagArea extends React.Component {
       stretchedY: false,
       originX: 'left',
       originY: 'top',
-      imageUrl: 'https://files.gamebanana.com/img/ico/sprays/4ea2f4dad8d6f.png',
+      imageUrl: dataUri,
       expandTools: false,
       expandControls: false,
       expandColors: false,
