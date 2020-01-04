@@ -82,7 +82,7 @@ module.exports = function (app) {
   // new image: get url and user info from client, make new local object, link to user in db
   // path to return data on a single image
   app.get("image/:id", (req, res) => {
-    db.Image.findOne({ _id: req.params.id })
+    Image.findOne({ _id: req.params.id })
       .then(dbImage => {
         // if we get data back, pass to client
         res.json(dbImage);
@@ -131,7 +131,7 @@ module.exports = function (app) {
   //get specific image from db/fb
   // path to return data on a single image
   app.get("image/:id", (request, response) => {
-    db.Image.findOne({ _id: request.params.id })
+    Image.findOne({ _id: request.params.id })
       .then(dbImage => {
         // if we get data back, pass to client
         response.json(dbImage);
