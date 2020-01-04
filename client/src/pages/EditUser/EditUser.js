@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
+import './style.css'
 
 class EditUser extends React.Component {
-  state =  {
-    userEmail: "",
-    userName: "",
-    userPassword: ""
-
-    }
-    handleEmailChange = (event) => {
-      const value = event.target.value;
-      this.setState({userEmail:value}) 
-    }  
-     handleNameChange = (event) => {
-      const value = event.target.value;
-      this.setState({userName:value}) 
-    } 
-     handlePasswordChange = (event) => {
-      const value = event.target.value;
-      this.setState({userPassword:value}) 
-    } 
+  state = {
+    currentUser: '',
+    newUserName: '',
+    userPassword: ''
+  }
+  handleEmailChange = event => {
+    const value = event.target.value
+    this.setState({ currentUser: value })
+  }
+  handleNameChange = event => {
+    const value = event.target.value
+    this.setState({ newUserName: value })
+  }
+  handlePasswordChange = event => {
+    const value = event.target.value
+    this.setState({ userPassword: value })
+  }
   render () {
     return (
       <div className='container'>
@@ -34,23 +34,37 @@ class EditUser extends React.Component {
         ></div>
         <form>
           <div className='form-group'>
-            <label>Email address</label>
-            <input value={this.state.userEmail} 
-             onChange={this.handleEmailChange}
-              type='email'
+            <label>Current Username</label>
+            <input
+              value={this.state.currentUser}
+              onChange={this.handleEmailChange}
+              type='username'
               className='form-control'
-              id='exampleInputEmail1'
-              aria-describedby='emailHelp'
-              placeholder='Enter email'
+              id='exampleInputUser1'
+              aria-describedby='userHelp'
+              placeholder='Current Username'
             />
-            <small id='emailHelp' className='form-text text-muted'>
-              We'll never share your email with anyone else.
-            </small>
           </div>
           <div className='form-group'>
-            <label>Password</label>
-            <input value={this.state.userPassword} 
-             onChange={this.handlePasswordChange}
+            <label>New Username</label>
+            <input
+              value={this.state.newUserName}
+              onChange={this.handleNameChange}
+              type='username'
+              className='form-control'
+              id='exampleInputUsername1'
+              placeholder='username'
+            />{' '}
+          </div>
+          <button type='submit' className='btn btn-primary'>
+            Submit
+          </button>
+
+          <div className='form-group'>
+            <label>Current Password</label>
+            <input
+              value={this.state.userPassword}
+              onChange={this.handlePasswordChange}
               type='password'
               className='form-control'
               id='exampleInputPassword1'
@@ -58,19 +72,32 @@ class EditUser extends React.Component {
             />
           </div>
           <div className='form-group'>
-            <label>Username</label>
-            <input value={this.state.userName} 
-             onChange={this.handleNameChange}
-              type='username'
+            <label>New Password</label>
+            <input
+              value={this.state.userPassword}
+              onChange={this.handlePasswordChange}
+              type='password'
               className='form-control'
-              id='exampleInputUsername1'
-              placeholder='username'
+              id='exampleInputPassword1'
+              placeholder='Password'
+            />
+          </div>
+          <div className='form-group'>
+            <label>Confirm New Password</label>
+            <input
+              value={this.state.userPassword}
+              onChange={this.handlePasswordChange}
+              type='password'
+              className='form-control'
+              id='exampleInputPassword1'
+              placeholder='Password'
             />
           </div>
           <button type='submit' className='btn btn-primary'>
             Submit
           </button>
         </form>
+        {/* TODO:SECOND FORM */}
       </div>
     )
   }

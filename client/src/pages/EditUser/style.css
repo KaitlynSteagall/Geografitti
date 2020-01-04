@@ -1,0 +1,12 @@
+.justify-content-end {
+  position: right;
+}
+
+h3 {
+  color: white;
+  font-weight: bold;
+}
+
+.control-label {
+  font-size: 12px;
+}
