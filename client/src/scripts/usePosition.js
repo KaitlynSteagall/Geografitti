@@ -27,7 +27,7 @@ export const usePosition = () => {
     const geo = navigator.geolocation;
     // throw an error if geolocation is not available (this should also trigger on permission denial)
     if (!geo) {
-      setError('Geolocation is not supported');
+      setError('Geolocation is not supported or permission denied');
       return;
     }
     // watchposition is provided by the geolocation service
