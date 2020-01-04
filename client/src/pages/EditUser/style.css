@@ -1,5 +1,12 @@
-.img {
-  background-color: #ff7d00 !important;
-  color: #fff !important;
-  
+.justify-content-end {
+  position: right;
+}
+
+h3 {
+  color: white;
+  font-weight: bold;
+}
+
+.control-label {
+  font-size: 12px;
 }
