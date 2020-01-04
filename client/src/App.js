@@ -9,6 +9,7 @@ import EditPhoto from "./pages/EditPhoto"
 // import Portfolio from "./pages/Portfolio/Portfolio"
 import EditUser from "./pages/EditUser/EditUser"
 // import NotFound from "./pages/NotFound/NotFound"
+import MapPage from "./pages/MapPage/MapPage"
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
             <Route exact path="/create-art" component={EditPhoto} />
             {/* <Route exact path="/portfolio" component={Portfolio} /> */}
             <Route exact path="/edit-account-info" component={EditUser} />
+            <Route exact path="/view-art" component={MapPage} />
             {/* <Route component={NotFound} /> */} 
           </Switch>
         </div>
