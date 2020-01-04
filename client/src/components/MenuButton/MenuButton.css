@@ -1,4 +1,10 @@
-.btn {
+.menu-btn {
   background-color: rgba(252, 252, 252, 0.973);
   font-family: 'Dosis';
 }
+
+.image {
+  background-color: orange;
+  position: fixed;
+}
+
