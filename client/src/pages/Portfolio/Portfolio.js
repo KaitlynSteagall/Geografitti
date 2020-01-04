@@ -9,3 +9,6 @@ const Portfolio = () => <Gallery photos={photos} />;
 render(<Portfolio  />, document.getElementById("root"));
 
 export default Portfolio
+
+// TODO: connect api routes to get images from capture photo and edit photo to
+// go onto gallery 
