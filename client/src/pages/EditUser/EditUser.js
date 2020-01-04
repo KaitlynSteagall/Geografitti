@@ -54,12 +54,8 @@ class EditUser extends React.Component {
               className='form-control'
               id='exampleInputUsername1'
               placeholder='username'
-            />{' '}
+            />
           </div>
-          <button type='submit' className='btn btn-primary'>
-            Submit
-          </button>
-
           <div className='form-group'>
             <label>Current Password</label>
             <input
