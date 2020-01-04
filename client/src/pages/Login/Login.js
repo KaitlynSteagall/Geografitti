@@ -23,8 +23,8 @@ class Login extends Component {
 
   render () {
     return (
-      <div className='container' reqired='true'>
-        <form className={"signUp " + this.state.signUp} reqired='true'>
+      <div className='container' required='true'>
+        <form className={"signUp " + this.state.signUp} required='true'>
           <h3>Create Your Account</h3>
           <p>
             Just enter your email address
@@ -35,12 +35,12 @@ class Login extends Component {
             className='w100'
             type='email'
             placeholder='Insert eMail'
-            reqired
+            required
             autoComplete='off'
-            reqired='true'
+            required='true'
           />
-          <input type='password' placeholder='Insert Password' reqired />
-          <input type='password' placeholder='Verify Password' reqired />
+          <input type='password' placeholder='Insert Password' required />
+          <input type='password' placeholder='Verify Password' required />
           <button className="form-btn sx log-in w-100 " onClick={this.onLoginClick} type='button'>
            Create Account &amp; Login
           </button>
@@ -59,9 +59,9 @@ class Login extends Component {
             type='email'
             placeholder='Insert eMail'
             autoComplete='off'
-            reqired
+            required
           />
-          <input type='password' placeholder='Insert Password' reqired />
+          <input type='password' placeholder='Insert Password' required />
           <button className="form-btn sx back " 
           onClick={this.onBackClick} type='button'>
            Sign Up
