@@ -17,7 +17,7 @@ module.exports = function (app) {
   app.post("/user/new", (req, res) => {
     const userObject = req.body;
     // tell firebase to make a new user, and save the uid it creates
-    const newID = auth.registerUser(userObject.email, userObject.password);
+    const newID = auth.handleNewUser(userObject.email, userObject.password);
     // tell the local mongo server about this new user as well
     User.create({
       firebaseID: newID,
