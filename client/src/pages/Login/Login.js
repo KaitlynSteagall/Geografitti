@@ -23,8 +23,8 @@ class Login extends Component {
 
   render () {
     return (
-      <div className='container' required='true'>
-        <form className={"signUp " + this.state.signUp} required='true'>
+      <div className='container' required={true}>
+        <form className={"signUp " + this.state.signUp} required={true}>
           <h3>Create Your Account</h3>
           <p>
             Just enter your email address
@@ -37,7 +37,7 @@ class Login extends Component {
             placeholder='Insert eMail'
             required
             autoComplete='off'
-            required='true'
+            required={true}
           />
           <input type='password' placeholder='Insert Password' required />
           <input type='password' placeholder='Verify Password' required />
