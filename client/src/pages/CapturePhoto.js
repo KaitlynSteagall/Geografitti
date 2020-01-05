@@ -18,28 +18,7 @@ class CapturePhoto extends React.Component {
 }
 
 export default CapturePhoto;
-
- 
-
-
-// class CapturePhoto extends React.Component {
   
   
   
 
-//   render() {
-    
-//     return (
-//       <div>
-//         <TagArea
-        
-
-//        />
-       
-//       </div>
-
-//     );
-//   }
-// }
-
-// export default CapturePhoto;
