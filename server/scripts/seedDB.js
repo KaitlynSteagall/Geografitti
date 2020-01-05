@@ -6,7 +6,6 @@ mongoose.connect(
   "mongodb://localhost/db_geograffiti"
 );
 
-
 // create an array of images we can match to our users
 const imageSeed = [
   {

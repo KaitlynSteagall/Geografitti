@@ -1,16 +1,7 @@
 import React from "react";
-
 import Photo from "../components/Camera"; 
-
-
- 
-
-
 class CapturePhoto extends React.Component {
   
-  
-  
-
   render() {
     
     return (
@@ -20,7 +11,6 @@ class CapturePhoto extends React.Component {
 
        />
        
-       
       </div>
 
     );
@@ -28,28 +18,3 @@ class CapturePhoto extends React.Component {
 }
 
 export default CapturePhoto;
-
- 
-
-
-// class CapturePhoto extends React.Component {
-  
-  
-  
-
-//   render() {
-    
-//     return (
-//       <div>
-//         <TagArea
-        
-
-//        />
-       
-//       </div>
-
-//     );
-//   }
-// }
-
-// export default CapturePhoto;

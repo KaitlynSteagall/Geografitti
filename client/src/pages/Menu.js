@@ -1,23 +1,27 @@
 import React, { Component } from "react";
 import MenuButton from "../components/MenuButton/MenuButton";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 
 class Menu extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="col-12">
+      <div className="container mt-5 ml-4">
+        <div className="col-12 mt-5">
           <div className="row">
-            <MenuButton>Make New Art</MenuButton>
+            <MenuButton><Link to="/view-art" style={{ color: "black" }}>Search Art In Your Area</Link></MenuButton>
           </div>
           <div className="row">
-            <MenuButton>View My Gallery</MenuButton>
+            <MenuButton><Link to="/take-photo" style={{ color: "black" }}>Make New Art</Link></MenuButton>
           </div>
           <div className="row">
-            <MenuButton>Edit Account Info</MenuButton>
+            <MenuButton><Link to="/portfolio" style={{ color: "black" }}>View My Gallery</Link></MenuButton>
           </div>
           <div className="row">
-            <MenuButton>Logout</MenuButton>
+            <MenuButton><Link to="/edit-account-info" style={{ color: "black" }}>Edit Account Info</Link></MenuButton>
+          </div>
+          <div className="row">
+            <MenuButton><Link to="/login" style={{ color: "black" }}>Logout</Link></MenuButton>
           </div>
         </div>
       </div>
