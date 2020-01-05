@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-// import Login from "./pages/Login/Login"
+import SmokeLogo from "./components/SmokeLogo/SmokeLogo";
+import Login from "./pages/Login/Login"
 import Menu from "./pages/Menu"
 import CapturePhoto from "./pages/CapturePhoto"
 import EditPhoto from "./pages/EditPhoto"
-// import Portfolio from "./pages/Portfolio"
-// import EditUser from "./pages/EditUser"
-
+import Portfolio from "./pages/Portfolio/Portfolio"
+import EditUser from "./pages/EditUser/EditUser"
+import MapPage from "./pages/MapPage/MapPage"
+import NotFound from "./pages/NotFound/NotFound"
 
 class App extends Component {
 
