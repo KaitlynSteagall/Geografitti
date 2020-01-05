@@ -11,17 +11,20 @@ const imageSeed = [
   {
     imageURL: `https://cdn.pixabay.com/photo/2017/05/13/22/18/graffiti-2310818_960_720.jpg`,
     imageAuthor: `_id`,
-    imageLocation: `42.2808° N, 83.7430° W`
+    imageLocation: { lat: 45.5051,
+      lng: -122.6750 }
   },
   {
     imageURL: `https://cdn.pixabay.com/photo/2019/09/06/07/48/graffiti-4455812_960_720.jpg`,
     imageAuthor: `_id`,
-    imageLocation: `42.2808° N, 83.7430° W`
+    imageLocation: { lat: 45.6257,
+      lng: -122.6761 }
   },
   {
     imageURL: `https://pixnio.com/free-images/2017/12/12/2017-12-12-16-50-26-1200x730.jpg`,
     imageAuthor: `_id`,
-    imageLocation: `47.6062° N, 122.3321° W`
+    imageLocation: { lat: 45.5528,
+      lng: -122.5608 }
   },
 ];
 
@@ -82,4 +85,4 @@ function seedSomeData() {
   }
 }
 
-module.exports = seedSomeData();
+module.exports = seedSomeData;
