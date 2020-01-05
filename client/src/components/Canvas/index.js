@@ -1,76 +1,64 @@
 import React from "react";
-import {SketchField, Tools} from "react-sketch"; 
-import { CompactPicker} from "react-color"; 
-import Photo from "../Camera/index"; 
-import {Button} from 'react-bootstrap'; 
-
-
-
-
+import { SketchField, Tools } from "react-sketch";
+import { CompactPicker } from "react-color";
+import Photo from "../Camera/index";
+import { Button } from 'react-bootstrap';
 
 class TagArea extends React.Component {
-  
 
-    state={
-      lineWidth: 10,
-      lineColor: 'black',
-      fillColor: 'transparent',
-      backgroundColor: 'transparent',
-      shadowWidth: 10,
-      shadowOffset: 10,
-      tool: Tools.Pencil,
-      enableRemoveSelected: false,
-      fillWithColor: true,
-      fillWithBackgroundColor: false,
-      drawings: [],
-      canUndo: false,
-      canRedo: false,
-      controlledSize: false,
-      imageURL: '',
-      sketchWidth: 600,
-      sketchHeight: 600,
-      stretched: true,
-      stretchedX: false,
-      stretchedY: false,
-      originX: 'left',
-      originY: 'top',
-      expandTools: false,
-      expandControls: false,
-      expandColors: false,
-      expandBack: false,
-      expandImages: false,
-      expandControlled: false,
-      text: 'a text, cool!',
-      enableCopyPaste: false,
-      show: false
-      
-    
+  state = {
+    lineWidth: 10,
+    lineColor: 'black',
+    fillColor: 'transparent',
+    backgroundColor: 'transparent',
+    shadowWidth: 10,
+    shadowOffset: 10,
+    tool: Tools.Pencil,
+    enableRemoveSelected: false,
+    fillWithColor: true,
+    fillWithBackgroundColor: false,
+    drawings: [],
+    canUndo: false,
+    canRedo: false,
+    controlledSize: false,
+    imageURL: '',
+    sketchWidth: 600,
+    sketchHeight: 600,
+    stretched: true,
+    stretchedX: false,
+    stretchedY: false,
+    originX: 'left',
+    originY: 'top',
+    expandTools: false,
+    expandControls: false,
+    expandColors: false,
+    expandBack: false,
+    expandImages: false,
+    expandControlled: false,
+    text: 'a text, cool!',
+    enableCopyPaste: false,
+    show: false
   }
 
-  
-  save = () =>{
-    let drawings = this.state.drawings; 
-    drawings.push(this.tag.toDataURL()); 
-    this.setState({ drawings: drawings}); 
-    console.log(drawings); 
+  save = () => {
+    let drawings = this.state.drawings;
+    drawings.push(this.tag.toDataURL());
+    this.setState({ drawings: drawings });
+    console.log(drawings);
     // Need to add the post route here!
-  }; 
+  };
 
   something = () => {
-    
-    let tag = this.tag; 
-    tag.addImg(this.props.dataPhotoUrl); 
+
+    let tag = this.tag;
+    tag.addImg(this.props.dataPhotoUrl);
     this.setState({
       canUndo: this.tag.canUndo(),
       canRedo: this.tag.canRedo(),
     });
+  };
 
-
-     
-    
-  }; 
-
-   selectTool = event => {
+  selectTool = event => {
     this.setState({
       tool: event.target.value,
       enableRemoveSelected: event.target.value === Tools.Select,
@@ -78,7 +66,7 @@ class TagArea extends React.Component {
     });
   };
 
-   undo = () => {
+  undo = () => {
     console.log("nada")
     this.tag.undo();
     this.setState({
@@ -87,33 +75,28 @@ class TagArea extends React.Component {
     });
   };
 
-  redo = () =>{
+  redo = () => {
     console.log("triggering")
-    this.tag.redo(); 
+    this.tag.redo();
     this.setState({
       canRedo: this.tag.canRedo(),
       canUndo: this.tag.canUndo(),
-    }); 
-  }; 
+    });
+  };
 
-  onTagChange = () =>{
+  onTagChange = () => {
     console.log("working!")
-    let prev = this.state.canUndo; 
-    let now = this.tag.canUndo(); 
+    let prev = this.state.canUndo;
+    let now = this.tag.canUndo();
     if (prev !== now) {
-      this.setState({canUndo: now})
+      this.setState({ canUndo: now })
     }
-  }; 
-
-  
-
-
-  
+  };
 
   componentDidMount = () => {
-    (function(console) {
+    (function (console) {
       console.log("mounting")
-      console.save = function(data, filename) {
+      console.save = function (data, filename) {
         if (!data) {
           console.error('Console.save: No data');
           return;
@@ -132,130 +115,94 @@ class TagArea extends React.Component {
         a.dispatchEvent(e);
       };
     })(console);
-  }; 
+  };
 
-  
-
-  
- 
   render() {
     console.log(this.props.dataPhotoUrl, 'thats where photo data is')
-     return (
-         <div className='container col-lg-12'>
-           <SketchField
-           id='tagArea'
-           className='canvas-area'
-         ref={c => (this.tag = c)}
-         width='800px'
-         height='800px'
-         tool={this.state.tool}
-         lineColor={this.state.lineColor}
-         onChange={this.onTagChange}
-         fillColor={this.state.fillColor}
-         />
+    return (
+      <div className='container col-lg-12'>
+        <SketchField
+          id='tagArea'
+          className='canvas-area'
+          ref={c => (this.tag = c)}
+          width='800px'
+          height='800px'
+          tool={this.state.tool}
+          lineColor={this.state.lineColor}
+          onChange={this.onTagChange}
+          fillColor={this.state.fillColor}
+        />
 
-         <Photo
-         handlePhotoDataUrl={this.props.handlePhotoDataUrl}
-         onClose={this.something}
+        <Photo
+          handlePhotoDataUrl={this.props.handlePhotoDataUrl}
+          onClose={this.something}
         //  value={this.props.handlePhotoDataUrl}
-         
-         
-         
-         />
+        />
 
-         <Button 
-         text="Testbutton"
-         onClick={this.something} />
+        <Button
+          text="Testbutton"
+          onClick={this.something} />
 
-         
-         
-         
+        <button
+          className="btn btn-primary"
+          onClick={this.selectTool}
+          value={Tools.Pencil}
 
-         
+        >Change to Pencil</button>
 
-         
-         
-         
+        <button
+          className="btn btn-success"
+          onClick={this.selectTool}
+          value={Tools.Line}
+        >Line</button>
 
-         
-        <button 
-         className="btn btn-primary"
-         onClick={this.selectTool}
-         value={Tools.Pencil}
-         
-         >Change to Pencil</button>
+        <button
+          className="btn btn-primary"
+          onClick={this.selectTool}
+          value={Tools.Rectangle}
+        >Rectangle</button>
+        <button
+          className="btn btn-success"
+          onClick={this.selectTool}
+          value={Tools.Pan}
+        >Pan</button>
 
-         <button 
-         className="btn btn-success"
-         onClick={this.selectTool}
-         value={Tools.Line}
-         >Line</button>
+        <button
+          className="btn btn-primary"
+          onClick={this.selectTool}
+          value={Tools.Select}
+        >Select</button>
 
-         <button 
-         className="btn btn-primary"
-         onClick={this.selectTool}
-         value={Tools.Rectangle}
-         >Rectangle</button>
-         <button
-         className="btn btn-success"
-         onClick={this.selectTool}
-         value={Tools.Pan}
-         >Pan</button>
+        <button
+          className="btn btn-success"
+          onClick={this.undo}
 
+        >Undo</button>
+        <button
+          className="btn btn-primary"
+          onClick={this.redo}
+        >Redo</button>
 
-         <button 
-         className="btn btn-primary"
-         onClick={this.selectTool}
-         value={Tools.Select}
-         >Select</button>
+        <button
+          className="btn btn-success"
+          onClick={this.save}
+        >Save it!</button>
 
-         
-         
-         <button
-         className="btn btn-success"
-         onClick={this.undo}
-         
-         >Undo</button>
-         <button
-         className="btn btn-primary"
-         onClick={this.redo}
-         >Redo</button>
+        <button
+          id="download"
+          classnName="btn btn-danger"
+          onClick={this.download}
+        >Download</button>
 
-         <button 
-         className= "btn btn-success"
-         onClick={this.save}
-         >Save it!</button>
+        <CompactPicker
+          color={this.state.lineColor}
+          value={this.state.lineColor}
+          onChange={(color) => this.setState({ lineColor: color.hex })} />
 
+      </div>
 
-         <button 
-         id="download"
-         classnName="btn btn-danger"
-         onClick={this.download}
-         >Download</button>
-          
-
-          <CompactPicker
-           color={this.state.lineColor}
-           value={this.state.lineColor}
-           onChange={(color) => this.setState({lineColor: color.hex})}/>
-
-
-
-           
-
-           
-
-           
-         </div>
-          
-         
-         
-         
-
-         
-     )
+    )
   }
 }
-
 
 export default TagArea
