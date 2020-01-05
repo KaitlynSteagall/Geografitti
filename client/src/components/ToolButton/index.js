@@ -1,10 +1,7 @@
-
 import React from "react";
 import { Tools } from "react-sketch";
 
-function Toolbutton(props) {
-
-  function Toolbutton(props){
+function Toolbutton(props){
 
   return (
     <button
@@ -15,6 +12,5 @@ function Toolbutton(props) {
     </button>
   );
 }
-
 
 export default Toolbutton; 
