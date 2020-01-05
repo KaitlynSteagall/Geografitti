@@ -28,7 +28,7 @@ function Photo(props) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Camera
+      <i class="fas fa-camera"></i>
       </Button>
 
       <Modal show={show} onHide={handleClose}>

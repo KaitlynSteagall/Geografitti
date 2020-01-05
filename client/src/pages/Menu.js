@@ -12,7 +12,7 @@ class Menu extends Component {
             <MenuButton><Link to="/view-art" style={{ color: "black" }}>Search Art In Your Area</Link></MenuButton>
           </div>
           <div className="row">
-            <MenuButton><Link to="/take-photo" style={{ color: "black" }}>Make New Art</Link></MenuButton>
+            <MenuButton><Link to="/create-art" style={{ color: "black" }}>Make New Art</Link></MenuButton>
           </div>
           <div className="row">
             <MenuButton><Link to="/portfolio" style={{ color: "black" }}>View My Gallery</Link></MenuButton>
