@@ -20,7 +20,8 @@ const firebaseConfig = {
   measurementId: process.env.DB_FB_LOGIN_MEASURE_ID
 };
 const app = firebase.initializeApp(firebaseConfig);
-function handleNewUser(email, password) {
+
+export function handleNewUser(email, password) {
   // use firebase method to create new user on google's end
   app
     .auth()
@@ -38,7 +39,7 @@ function handleNewUser(email, password) {
     });
 }
 // this can probably be altered later to be smarter and allow display name or email login
-function handleLogin(email, password) {
+export function handleLogin(email, password) {
   app
     .auth()
     .signInWithEmailAndPassword(email, password)
@@ -46,7 +47,7 @@ function handleLogin(email, password) {
       console.log(`error ${error.code}: ${error.message}`);
     });
 }
-function handleLogout(event) {
+export function handleLogout(event) {
   firebase.auth().signOut()
     .then(function () {
       console.log(`logout was successful`);
