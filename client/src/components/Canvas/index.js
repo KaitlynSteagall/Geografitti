@@ -2,7 +2,7 @@ import React from "react";
 import { SketchField, Tools } from "react-sketch";
 import { CompactPicker } from "react-color";
 import Photo from "../Camera/index";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button,MO } from "react-bootstrap";
 
 class TagArea extends React.Component {
   state = {
@@ -134,9 +134,9 @@ class TagArea extends React.Component {
   render() {
     console.log(this.props.dataPhotoUrl, "thats where photo data is");
     return (
-      <div className="col-xs-7 col-sm-7 col-md-9 col-lg-9">
+      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <Row>
-          <Col xs="1" md="1" lg=''>
+          <Col xs="1" md="1" lg="">
             <SketchField
               id="tagArea"
               className="canvas-area"
@@ -156,9 +156,12 @@ class TagArea extends React.Component {
           onClose={this.something}
         />
 
-        <Button text="Testbutton" onClick={this.something} />
+        <Button variant="secondary" onClick={this.something}>
+          Throw it up
+        </Button>
 
-        <button
+        
+          <button
           className="btn btn-primary"
           onClick={this.selectTool}
           value={Tools.Pencil}
@@ -198,14 +201,18 @@ class TagArea extends React.Component {
         </button>
 
         <button className="btn btn-success" onClick={this.undo}>
-        <i class="fas fa-undo"></i>
+          <i class="fas fa-undo"></i>
         </button>
         <button className="btn btn-primary" onClick={this.redo}>
-        <i class="fas fa-redo"></i>
+          <i class="fas fa-redo"></i>
         </button>
 
+          
+
+        
+
         <button className="btn btn-success" onClick={this.save}>
-        <i class="far fa-save">Save</i>
+          <i class="far fa-save">Save</i>
         </button>
 
         <button
