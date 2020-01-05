@@ -1,18 +1,19 @@
-import React, { Component } from "react";
-import {Link, BrowserRouter as Router } from "react-router-dom"
-// import Camera from "../components/Camera/Camera"
-
-class CapturePhoto extends Component {
-
+import React from "react";
+import Photo from "../components/Camera"; 
+class CapturePhoto extends React.Component {
+  
   render() {
+    
     return (
-      <div className="container">
-        {/* <Camera /> */}
-        <button style={{backgroundColor:"transparent", border:"none"}}>
-          <Link to="Create-Art" style={{color:"white", fontSize:"2em"}}><i className="far fa-circle"></i></Link>
-        </button>
+      <div>
+        <Photo
+        handlePhotoDataUrl={this.props.handlePhotoDataUrl}
+
+       />
+       
       </div>
-    )
+
+    );
   }
 }
 

@@ -1,27 +1,32 @@
-import React from "react"; 
+import React from "react";
 import {SketchField, Tools} from "react-sketch"; 
-import ToolButton from "../ToolButton"; 
+import { CompactPicker} from "react-color"; 
+import Photo from "../Camera/index"; 
+import {Button} from 'react-bootstrap'; 
+
+
+
 
 
 class TagArea extends React.Component {
-  constructor(props){
-    super(props); 
+  
 
-    this.state={
+    state={
       lineWidth: 10,
       lineColor: 'black',
-      fillColor: '#68CCCA',
+      fillColor: 'transparent',
       backgroundColor: 'transparent',
-      shadowWidth: 0,
-      shadowOffset: 0,
-      tool: Tools.Circle,
+      shadowWidth: 10,
+      shadowOffset: 10,
+      tool: Tools.Pencil,
       enableRemoveSelected: false,
-      fillWithColor: false,
+      fillWithColor: true,
       fillWithBackgroundColor: false,
       drawings: [],
       canUndo: false,
       canRedo: false,
       controlledSize: false,
+      imageURL: '',
       sketchWidth: 600,
       sketchHeight: 600,
       stretched: true,
@@ -29,7 +34,6 @@ class TagArea extends React.Component {
       stretchedY: false,
       originX: 'left',
       originY: 'top',
-      imageUrl: 'https://files.gamebanana.com/img/ico/sprays/4ea2f4dad8d6f.png',
       expandTools: false,
       expandControls: false,
       expandColors: false,
@@ -38,11 +42,35 @@ class TagArea extends React.Component {
       expandControlled: false,
       text: 'a text, cool!',
       enableCopyPaste: false,
+      show: false
       
-    };
+    
   }
 
-  selectTool = event => {
+  
+  save = () =>{
+    let drawings = this.state.drawings; 
+    drawings.push(this.tag.toDataURL()); 
+    this.setState({ drawings: drawings}); 
+    console.log(drawings); 
+    // Need to add the post route here!
+  }; 
+
+  something = () => {
+    
+    let tag = this.tag; 
+    tag.addImg(this.props.dataPhotoUrl); 
+    this.setState({
+      canUndo: this.tag.canUndo(),
+      canRedo: this.tag.canRedo(),
+    });
+
+
+     
+    
+  }; 
+
+   selectTool = event => {
     this.setState({
       tool: event.target.value,
       enableRemoveSelected: event.target.value === Tools.Select,
@@ -50,7 +78,7 @@ class TagArea extends React.Component {
     });
   };
 
-  _undo = () => {
+   undo = () => {
     console.log("nada")
     this.tag.undo();
     this.setState({
@@ -58,6 +86,15 @@ class TagArea extends React.Component {
       canRedo: this.tag.canRedo(),
     });
   };
+
+  redo = () =>{
+    console.log("triggering")
+    this.tag.redo(); 
+    this.setState({
+      canRedo: this.tag.canRedo(),
+      canUndo: this.tag.canUndo(),
+    }); 
+  }; 
 
   onTagChange = () =>{
     console.log("working!")
@@ -67,6 +104,11 @@ class TagArea extends React.Component {
       this.setState({canUndo: now})
     }
   }; 
+
+  
+
+
+  
 
   componentDidMount = () => {
     (function(console) {
@@ -97,42 +139,119 @@ class TagArea extends React.Component {
   
  
   render() {
+    console.log(this.props.dataPhotoUrl, 'thats where photo data is')
      return (
-         <div className='container'>
+         <div className='container col-lg-12'>
            <SketchField
-           ref={c => (this.tag = c)}
+           id='tagArea'
+           className='canvas-area'
+         ref={c => (this.tag = c)}
          width='800px'
          height='800px'
          tool={this.state.tool}
          lineColor={this.state.lineColor}
          onChange={this.onTagChange}
+         fillColor={this.state.fillColor}
          />
-         <span>
-         <ToolButton 
-         
-         onClick={this.selectTool}
-         value={Tools.Pencil}
-         
-         
+
+         <Photo
+         handlePhotoDataUrl={this.props.handlePhotoDataUrl}
+         onClose={this.something}
+        //  value={this.props.handlePhotoDataUrl}
          
          
          
-          />
-         </span>
-         <button
+         />
+
+         <Button 
+         text="Testbutton"
+         onClick={this.something} />
+
+         
+         
+         
+
+         
+
+         
+         
+         
+
+         
+        <button 
          className="btn btn-primary"
          onClick={this.selectTool}
          value={Tools.Pencil}
-         >Change to Pencil</button>
-         <button
-         onClick={this._undo}
          
-         />Undo working
-         <span>
+         >Change to Pencil</button>
+
+         <button 
+         className="btn btn-success"
+         onClick={this.selectTool}
+         value={Tools.Line}
+         >Line</button>
+
+         <button 
+         className="btn btn-primary"
+         onClick={this.selectTool}
+         value={Tools.Rectangle}
+         >Rectangle</button>
+         <button
+         className="btn btn-success"
+         onClick={this.selectTool}
+         value={Tools.Pan}
+         >Pan</button>
+
+
+         <button 
+         className="btn btn-primary"
+         onClick={this.selectTool}
+         value={Tools.Select}
+         >Select</button>
+
+         
+         
+         <button
+         className="btn btn-success"
+         onClick={this.undo}
+         
+         >Undo</button>
+         <button
+         className="btn btn-primary"
+         onClick={this.redo}
+         >Redo</button>
+
+         <button 
+         className= "btn btn-success"
+         onClick={this.save}
+         >Save it!</button>
+
+
+         <button 
+         id="download"
+         classnName="btn btn-danger"
+         onClick={this.download}
+         >Download</button>
+          
+
+          <CompactPicker
+           color={this.state.lineColor}
+           value={this.state.lineColor}
+           onChange={(color) => this.setState({lineColor: color.hex})}/>
+
+
+
            
+
            
-         </span>
+
+           
          </div>
+          
+         
+         
+         
+
          
      )
   }

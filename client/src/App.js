@@ -12,6 +12,15 @@ import MapPage from "./pages/MapPage/MapPage"
 import NotFound from "./pages/NotFound/NotFound"
 
 class App extends Component {
+
+  state={
+    photoDataUrl: "",
+    
+  }
+  handlePhotoDataUrl = (newPhotoDataUrl)=>{
+    this.setState({photoDataUrl: newPhotoDataUrl})
+    
+  }
   render() {
     return (
       <Router>
@@ -20,8 +29,8 @@ class App extends Component {
             <Route exact path="/" component={SmokeLogo} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/menu" component={Menu} />
-            <Route exact path="/take-photo" component={CapturePhoto} />
-            <Route exact path="/create-art" component={EditPhoto} />
+            <Route exact path="/take-photo" render={() =><CapturePhoto handlePhotoDataUrl={this.handlePhotoDataUrl} />}/>
+            <Route exact path="/create-art" render={() =><EditPhoto photoDataUrl={this.state.photoDataUrl} handlePhotoDataUrl={this.handlePhotoDataUrl} />} />
             <Route exact path="/portfolio" component={Portfolio} />
             <Route exact path="/edit-account-info" component={EditUser} />
             <Route exact path="/view-art" component={MapPage} />
