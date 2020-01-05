@@ -17,7 +17,6 @@ class CapturePhoto extends React.Component {
   }
 }
 
-<<<<<<< HEAD
 export default CapturePhoto;
 
  
@@ -44,6 +43,3 @@ export default CapturePhoto;
 // }
 
 // export default CapturePhoto;
-=======
-export default CapturePhoto;
->>>>>>> 658e63f5dd297994b63ea0cc2ec2d466bff59db8
