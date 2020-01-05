@@ -6,7 +6,7 @@ import Login from "./pages/Login/Login"
 import Menu from "./pages/Menu"
 import CapturePhoto from "./pages/CapturePhoto"
 import EditPhoto from "./pages/EditPhoto"
-// import Portfolio from "./pages/Portfolio/Portfolio"
+import Portfolio from "./pages/Portfolio/Portfolio"
 import EditUser from "./pages/EditUser/EditUser"
 import MapPage from "./pages/MapPage/MapPage"
 import NotFound from "./pages/NotFound/NotFound"
@@ -22,7 +22,7 @@ class App extends Component {
             <Route exact path="/menu" component={Menu} />
             <Route exact path="/take-photo" component={CapturePhoto} />
             <Route exact path="/create-art" component={EditPhoto} />
-            {/* <Route exact path="/portfolio" component={Portfolio} /> */}
+            <Route exact path="/portfolio" component={Portfolio} />
             <Route exact path="/edit-account-info" component={EditUser} />
             <Route exact path="/view-art" component={MapPage} />
             <Route component={NotFound} /> 
