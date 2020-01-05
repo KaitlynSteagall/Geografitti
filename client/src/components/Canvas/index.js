@@ -178,7 +178,7 @@ class TagArea extends React.Component {
          
 
          
-        <button
+        <button 
          className="btn btn-primary"
          onClick={this.selectTool}
          value={Tools.Pencil}
