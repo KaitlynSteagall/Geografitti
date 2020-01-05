@@ -16,9 +16,10 @@ class CapturePhoto extends React.Component {
     return (
       <div>
         <Photo
-        
+        handlePhotoDataUrl={this.props.handlePhotoDataUrl}
 
        />
+       
        
       </div>
 

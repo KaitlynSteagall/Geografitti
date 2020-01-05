@@ -1,19 +1,17 @@
 import React from "react";
 import {SketchField, Tools} from "react-sketch"; 
 import { CompactPicker} from "react-color"; 
-import {fabric} from "fabric"; 
-import dataUri from "../Camera/index"; 
-import ToolModal from "../ToolModal"; 
+import Photo from "../Camera/index"; 
+import {Button} from 'react-bootstrap'; 
 
 
 
 
 
 class TagArea extends React.Component {
-  constructor(props){
-    super(props); 
+  
 
-    this.state={
+    state={
       lineWidth: 10,
       lineColor: 'black',
       fillColor: 'transparent',
@@ -28,6 +26,7 @@ class TagArea extends React.Component {
       canUndo: false,
       canRedo: false,
       controlledSize: false,
+      imageURL: '',
       sketchWidth: 600,
       sketchHeight: 600,
       stretched: true,
@@ -35,7 +34,6 @@ class TagArea extends React.Component {
       stretchedY: false,
       originX: 'left',
       originY: 'top',
-      imageUrl: dataUri,
       expandTools: false,
       expandControls: false,
       expandColors: false,
@@ -46,15 +44,10 @@ class TagArea extends React.Component {
       enableCopyPaste: false,
       show: false
       
-    };
+    
   }
 
-  showModal = e => {
-    this.setState({
-      show: true, 
-    }); 
-
-  }; 
+  
   save = () =>{
     let drawings = this.state.drawings; 
     drawings.push(this.tag.toDataURL()); 
@@ -63,7 +56,17 @@ class TagArea extends React.Component {
     // Need to add the post route here!
   }; 
 
-  download = () => {
+  something = () => {
+    
+    let tag = this.tag; 
+    tag.addImg(this.props.dataPhotoUrl); 
+    this.setState({
+      canUndo: this.tag.canUndo(),
+      canRedo: this.tag.canRedo(),
+    });
+
+
+     
     
   }; 
 
@@ -102,6 +105,11 @@ class TagArea extends React.Component {
     }
   }; 
 
+  
+
+
+  
+
   componentDidMount = () => {
     (function(console) {
       console.log("mounting")
@@ -131,6 +139,7 @@ class TagArea extends React.Component {
   
  
   render() {
+    console.log(this.props.dataPhotoUrl, 'thats where photo data is')
      return (
          <div className='container col-lg-12'>
            <SketchField
@@ -144,15 +153,36 @@ class TagArea extends React.Component {
          onChange={this.onTagChange}
          fillColor={this.state.fillColor}
          />
+
+         <Photo
+         handlePhotoDataUrl={this.props.handlePhotoDataUrl}
+         onClose={this.something}
+        //  value={this.props.handlePhotoDataUrl}
+         
+         
+         
+         />
+
+         <Button 
+         text="Testbutton"
+         onClick={this.something} />
+
+         
          
          
 
          
-           <button
+
+         
+         
+         
+
+         
+        <button
          className="btn btn-primary"
          onClick={this.selectTool}
          value={Tools.Pencil}
-         shadowOffset= '10'
+         
          >Change to Pencil</button>
 
          <button 
@@ -208,6 +238,8 @@ class TagArea extends React.Component {
            color={this.state.lineColor}
            value={this.state.lineColor}
            onChange={(color) => this.setState({lineColor: color.hex})}/>
+
+
 
            
 

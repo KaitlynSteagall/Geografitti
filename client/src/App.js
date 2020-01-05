@@ -10,6 +10,15 @@ import EditPhoto from "./pages/EditPhoto"
 
 
 class App extends Component {
+
+  state={
+    photoDataUrl: "",
+    
+  }
+  handlePhotoDataUrl = (newPhotoDataUrl)=>{
+    this.setState({photoDataUrl: newPhotoDataUrl})
+    
+  }
   render() {
     return (
       <Router>
@@ -17,8 +26,8 @@ class App extends Component {
           <Switch>
             {/* <Route exact path="/" component={Login} /> */}
             <Route exact path="/Menu" component={Menu} />
-            <Route exact path="/Take-Photo" component={CapturePhoto} />
-            <Route exact path="/Create-Art" component={EditPhoto} />
+            <Route exact path="/Take-Photo" render={() =><CapturePhoto handlePhotoDataUrl={this.handlePhotoDataUrl} />}/>
+            <Route exact path="/Create-Art" render={() =><EditPhoto photoDataUrl={this.state.photoDataUrl} handlePhotoDataUrl={this.handlePhotoDataUrl} />} />
             {/* <Route exact path="/Portfolio" component={Portfolio} /> */}
             {/* <Route exact path="/Edit-Account-Info" component={EditUser} /> */}
             {/* <Route component={NotFound} /> */}
