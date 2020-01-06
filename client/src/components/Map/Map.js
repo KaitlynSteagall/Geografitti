@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
 import { usePosition } from '../../scripts/usePosition';
-import { markerArray, markerClicked } from '../../scripts/markerHandlers'
+import { markerArray } from '../../scripts/markerHandlers'
+// import LocationPhoto, { handleShow } from '../MapModal/MapModal';
 
 function MapDiv(props) {
 
@@ -21,13 +22,15 @@ function MapDiv(props) {
         { markerArray().map(marker => {
           return (
             <Marker
+              className="locationPic"
               title = { marker._id }
               position = { marker.position }
-              onClick = { markerClicked }
+              // onClick = { handleShow }
            />
           )
         })}
       </GoogleMap>
+      {/* <LocationPhoto /> */}
     </LoadScript>
   )
 }

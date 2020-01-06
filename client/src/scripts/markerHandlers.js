@@ -1,5 +1,6 @@
+import React, {useState} from "react"; 
 
-// what this will be upon completion:
+//what this will be upon completion:
   // takes in two params: current lat & lng
   // send that as an object to the server
   // the server will run a script to find nearby images
@@ -37,6 +38,6 @@ export const markerArray = (lat, lng) => {
 // this script takes 1 param (the title of the marker, set to match the id of the photo)
 // sends that id via axios to the server. waits for backend to send back the image url associated with that id
 // displays that image as a modal
-export const markerClicked = (event) => {
-  alert(`you clicked marker ${event.ya.target.title}!`);
-}
+// export const markerClicked = (event) => {
+//   console.log(`you clicked marker ${event.ya.target.title}!`);
+// }
