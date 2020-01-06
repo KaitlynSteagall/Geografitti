@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const imageSchema = new Schema({
   imageURL: { type: String, required: true },
       // link to firebase database URL
-  imageLocation: { type: String, required: true },
+  imageLocation: { type: Map, of: Number, required: true },
       // location hash
   imageDuration: { type: Number, default: 10 },
       // when queried, use momentJS to add this # to create date to determine expiration
