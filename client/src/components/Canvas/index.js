@@ -2,13 +2,9 @@ import React from "react";
 import { SketchField, Tools } from "react-sketch";
 import { CompactPicker } from "react-color";
 import Photo from "../Camera/index";
-import { Row, Col, Button, Modal } from "react-bootstrap";
-
-
+import { Button, Modal } from "react-bootstrap";
 
 class TagArea extends React.Component {
-
-  
   state = {
     lineWidth: 10,
     lineColor: "black",
@@ -16,7 +12,7 @@ class TagArea extends React.Component {
     backgroundColor: "transparent",
     shadowWidth: 10,
     shadowOffset: 10,
-    tool: Tools.Circle,
+    tool: Tools.Pencil,
     enableRemoveSelected: false,
     fillWithColor: true,
     fillWithBackgroundColor: false,
@@ -25,11 +21,11 @@ class TagArea extends React.Component {
     canRedo: false,
     controlledSize: false,
     imageURL: "",
-    sketchWidth: 1024,
-    sketchHeight: 800,
+    sketchWidth: 600,
+    sketchHeight: 600,
     stretched: true,
-    stretchedX: true,
-    stretchedY: true,
+    stretchedX: false,
+    stretchedY: false,
     originX: "left",
     originY: "top",
     expandTools: false,
@@ -40,21 +36,8 @@ class TagArea extends React.Component {
     expandControlled: false,
     text: "a text, cool!",
     enableCopyPaste: false,
-    show: false, 
-    
+    show: false
   };
-
-   showTools = () =>{
-     this.setState({
-       show: true
-     });
-   }; 
-
-   goAway = () => {
-     this.setState({
-       show: false
-     }); 
-   }; 
 
   save = () => {
     let drawings = this.state.drawings;
@@ -108,10 +91,22 @@ class TagArea extends React.Component {
     }
   };
 
+  showTools = () => {
+    this.setState({
+      show: true
+    });
+  };
+
+  goAway = () => {
+    this.setState({
+      show: false
+    });
+  };
+
   componentDidMount = () => {
-    (function(console) {
+    (function (console) {
       console.log("mounting");
-      console.save = function(data, filename) {
+      console.save = function (data, filename) {
         if (!data) {
           console.error("Console.save: No data");
           return;
@@ -149,73 +144,88 @@ class TagArea extends React.Component {
   };
 
   render() {
-    
+    console.log(this.props.dataPhotoUrl, "thats where photo data is");
     return (
-      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <Row>
-          <Col xs="1" md="1" lg="">
-            <SketchField
-              id="tagArea"
-              className="canvas-area"
-              ref={c => (this.tag = c)}
-              width="1024px"
-              height="700px"
-              tool={this.state.tool}
-              lineColor={this.state.lineColor}
-              onChange={this.onTagChange}
-              fillColor={this.state.fillColor}
-            />
-          </Col>
-        </Row>
-
-        {/* Photo Modal */}
+      <div className="container col-lg-12">
+        <SketchField
+          id="tagArea"
+          className="canvas-area"
+          ref={c => (this.tag = c)}
+          width="800px"
+          height="800px"
+          tool={this.state.tool}
+          lineColor={this.state.lineColor}
+          onChange={this.onTagChange}
+          fillColor={this.state.fillColor}
+        />
 
         <Photo
           handlePhotoDataUrl={this.props.handlePhotoDataUrl}
-          
+          onClose={this.something}
+        //  value={this.props.handlePhotoDataUrl}
         />
 
-        <Button variant="secondary" onClick={this.something}>
-          Throw it up
-        </Button>
-
-        {/* ToolBox Modal */}
-
         
-        <Modal show={this.state.show}
-        handleClose={this.goAway}>
 
-          {/* Tools themselves */}
+        <Button text="Testbutton" onClick={this.something} ><i class="far fa-image"></i>Set your tag area</Button>
+        <Modal show={this.state.show} >
           <Modal.Body>
-          <button
-          variant="secondary"
-          onClick={this.selectTool}
-          value={Tools.Line}
-        >
-          <i class="fas fa-grip-lines"></i>
-        </button>
 
-        <button
+          <button
           className="btn btn-primary"
           onClick={this.selectTool}
-          value={Tools.Pencil}
-        >
-          <i class="fas fa-pencil-alt"></i>
-        </button>
-
-        
-
-        
-
-        
-
-        <CompactPicker
-          color={this.state.lineColor}
-          value={this.state.lineColor}
-          onChange={color => this.setState({ lineColor: color.hex })}
-        />
+          value={Tools.Circle}><i class="far fa-circle"></i> Circle</button>
 
 
+
+
+            <Button
+              variant="secondary"
+              onClick={this.selectTool}
+              value={Tools.Pencil}
+            ><i class="fas fa-pencil-alt"></i> 
+        </Button>
+
+
+            <Button
+              variant="secondary"
+              onClick={this.selectTool}
+              value={Tools.Rectangle}
+            ><i class="far fa-square"></i> 
+              Rectangle
+        </Button>
+
+            <Button
+              variant="secondary"
+              onClick={this.selectTool}
+              value={Tools.Line}
+            >
+              Line
+        </Button>
+
+        <Button
+          className="btn btn-success"
+          onClick={this.selectTool}
+          value={Tools.Pan}
+        ><i class="far fa-hand-rock"></i>
+          Grab it
+        </Button>
+
+        <Button
+          className="btn btn-primary"
+          onClick={this.selectTool}
+          value={Tools.Select}
+        ><i class="far fa-hand-pointer"></i>
+          Select and resize.
+        </Button>
+
+        <input type="range" name="points" min="0" max="10"></input>
+
+            <CompactPicker
+              color={this.state.lineColor}
+              value={this.state.lineColor}
+              onChange={color => this.setState({ lineColor: color.hex })}
+            />
 
 
           </Modal.Body>
@@ -224,63 +234,35 @@ class TagArea extends React.Component {
           </Modal.Footer>
         </Modal>
 
-        <Button onClick={this.showTools}>Open seasame</Button>
+        <Button onClick={this.showTools}><i class="fas fa-toolbox"></i>ToolBox</Button>
+
+
+
+
+
 
         
 
-        
-        <button
-          className="btn btn-primary"
-          onClick={this.selectTool}
-          value={Tools.Rectangle}
-        >
-          <i class="fas fa-vector-square"></i>
+        <button className="btn btn-success" onClick={this.undo}>
+          Undo
+        </button>
+        <button className="btn btn-primary" onClick={this.redo}>
+          Redo
         </button>
 
-        
+        <button className="btn btn-success" onClick={this.save}>
+          Save it!
+        </button>
 
-       
-        <Button
-          className="btn btn-success"
-          onClick={this.selectTool}
-          value={Tools.Pan}
-        >
-          Pan
-        </Button>
-
-        <Button
-          className="btn btn-primary"
-          onClick={this.selectTool}
-          value={Tools.Select}
-        >
-          <i class="fas fa-mouse-pointer"></i>
-        </Button>
-
-        <Button className="btn btn-success" onClick={this.undo}>
-          <i class="fas fa-undo"></i>
-        </Button>
-        <Button className="btn btn-primary" onClick={this.redo}>
-          <i class="fas fa-redo"></i>
-        </Button>
-        
-
-          
-
-        
-
-        <Button className="btn btn-success" onClick={this.save}>
-          <i class="far fa-save">Save</i>
-        </Button>
-
-        <Button
+        <button
           id="download"
           classnName="btn btn-danger"
           onClick={this.download}
         >
           Download
-        </Button>
+        </button>
 
-        
+
       </div>
     );
   }
