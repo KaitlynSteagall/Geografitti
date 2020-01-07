@@ -18,8 +18,8 @@ function Photo(props) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        <i class="fas fa-camera"></i>
+      <Button variant="secondary" onClick={handleShow}> 
+        <i class="fas fa-camera"></i> Pic the target
       </Button>
 
       <Modal show={show} onHide={handleClose} dialogClassName="modal-90w" size='lg'>
