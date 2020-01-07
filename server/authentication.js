@@ -1,13 +1,14 @@
-import firebase from "firebase";
-import * as firebaseui from "firebaseui";
-import { } from 'dotenv/config'
+const firebase = require('firebase');
+require('dotenv').config();
 // import and connect database
 const mongoose = require("mongoose");
-const db = require("../models");
+const User = require("./models/user");
+
 mongoose.connect(
   process.env.MONGODB_URI ||
   "mongodb://localhost/db_geograffiti"
 );
+
 // authenticate and initialize firebase
 const firebaseConfig = {
   apiKey: process.env.DB_FB_LOGIN_API_KEY,
@@ -19,42 +20,43 @@ const firebaseConfig = {
   appId: process.env.DB_FB_LOGIN_APP_ID,
   measurementId: process.env.DB_FB_LOGIN_MEASURE_ID
 };
+
 const app = firebase.initializeApp(firebaseConfig);
 
-export function handleNewUser(email, password) {
-  // use firebase method to create new user on google's end
-  app
-    .auth()
-    .createUserWithEmailAndPassword(email, password, displayName)
-    .then(newUserData =>{
-      // once created, store FBase id and other data as new local user
-      db.User.create({
-        firebaseID: newUserData.user.uid,
-        displayName: `theTaggingTook`,
-        email: email,
+module.exports = {
+  handleNewUser(email, password) {
+    // use firebase method to create new user on google's end
+    app
+      .auth()
+      .createUserWithEmailAndPassword(email, password, displayName)
+      .then(newUserData => {
+        // once created, store FBase id and other data as new local user
+        User.create({
+          firebaseID: newUserData.user.uid,
+          displayName: `theTaggingTook`,
+          email: email,
+        });
+      })
+      .catch(function (error) {
+        console.log(`error ${error.code}: ${error.message}`);
       });
-    })
-    .catch(function (error) {
-      console.log(`error ${error.code}: ${error.message}`);
-    });
+  },
+  // this can probably be altered later to be smarter and allow display name or email login
+  handleLogin(email, password) {
+    app
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(function (error) {
+        console.log(`error ${error.code}: ${error.message}`);
+      });
+  },
+  handleLogout(event) {
+    firebase.auth().signOut()
+      .then(function () {
+        console.log(`logout was successful`);
+      })
+      .catch(function (error) {
+        console.log(`error ${error.code}: ${error.message}`);
+      });
+  }
 }
-// this can probably be altered later to be smarter and allow display name or email login
-export function handleLogin(email, password) {
-  app
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .catch(function (error) {
-      console.log(`error ${error.code}: ${error.message}`);
-    });
-}
-export function handleLogout(event) {
-  firebase.auth().signOut()
-    .then(function () {
-      console.log(`logout was successful`);
-    })
-    .catch(function (error) {
-      console.log(`error ${error.code}: ${error.message}`);
-    });
-}
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);

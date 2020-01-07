@@ -1,10 +1,8 @@
-const express = require("express");
-const mongoose = require("mongoose");
-
 const User = require("../models/user");
 const Image = require("../models/image")
 const auth = require("../authentication")
 
+const express = require("express");
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -12,7 +10,7 @@ app.use(express.json());
 
 const PORT = 3000;
 
-module.exports = function (app) {
+module.exports = function () {
 
 // #region READ / GET ---
 
