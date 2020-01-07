@@ -91,7 +91,8 @@ const router = require("express").Router();
     })
       .then(dbUser => {
         // View the added result in the console
-        console.log(dbUser);
+        console.log(dbUser)
+        res.json(dbUser);
       })
       .catch(error => {
         // If an error occurred, log it
@@ -102,9 +103,11 @@ const router = require("express").Router();
   // login existing user
   router.post("/api/users/login", (req, res) => {
     // TODO: add complicated logic to check username or user email against local database, allowing users to login with username or email
-
+    res.json({valid: true});
     const userObject = req.body;
+    console.log(`user object: `, userObject);
     auth.handleLogin(userObject.email, userObject.password);
+    
   });
 
   // create new image entry

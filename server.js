@@ -6,8 +6,8 @@ require('dotenv').config();
 
 const checkForDatabase = require("./server/scripts/seedDB");
 
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
