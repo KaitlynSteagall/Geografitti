@@ -74,14 +74,11 @@ class TagArea extends React.Component {
   };
 
   selectTool = event => {
-    
     this.setState({
       tool: event.target.value,
       enableRemoveSelected: event.target.value === Tools.Select,
-      enableCopyPaste: event.target.value === Tools.Select,
-      
+      enableCopyPaste: event.target.value === Tools.Select
     });
-    console.log(this.state.tool)
   };
 
   undo = () => {
@@ -152,7 +149,7 @@ class TagArea extends React.Component {
   };
 
   render() {
-    console.log(this.props.dataPhotoUrl, "thats where photo data is");
+    
     return (
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <Row>
