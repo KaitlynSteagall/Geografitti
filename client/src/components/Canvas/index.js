@@ -151,8 +151,8 @@ class TagArea extends React.Component {
           id="tagArea"
           className="canvas-area"
           ref={c => (this.tag = c)}
-          width="800px"
-          height="800px"
+          width="100%"
+          height="100%"
           tool={this.state.tool}
           lineColor={this.state.lineColor}
           onChange={this.onTagChange}
@@ -165,33 +165,31 @@ class TagArea extends React.Component {
         //  value={this.props.handlePhotoDataUrl}
         />
 
-        
 
         <Button text="Testbutton" onClick={this.something} ><i class="far fa-image"></i>Set your tag area</Button>
+        <Button onClick={this.showTools} onClick={this.showTools} style={{ borderRadius: "150px" }}><i class="fas fa-pencil-alt"></i></Button>
+
         <Modal show={this.state.show} >
           <Modal.Body>
 
-          <button
-          className="btn btn-primary"
-          onClick={this.selectTool}
-          value={Tools.Circle}><i class="far fa-circle"></i> Circle</button>
-
-
-
+            <Button
+              className="btn btn-primary"
+              onClick={this.selectTool}
+              value={Tools.Circle}><i class="far fa-circle"></i> Circle
+            </Button>
 
             <Button
               variant="secondary"
               onClick={this.selectTool}
               value={Tools.Pencil}
-            ><i class="fas fa-pencil-alt"></i> 
-        </Button>
-
+            ><i class="fas fa-pencil-alt"></i>Pencil
+            </Button>
 
             <Button
               variant="secondary"
               onClick={this.selectTool}
               value={Tools.Rectangle}
-            ><i class="far fa-square"></i> 
+            ><i class="far fa-square"></i>
               Rectangle
         </Button>
 
@@ -203,23 +201,23 @@ class TagArea extends React.Component {
               Line
         </Button>
 
-        <Button
-          className="btn btn-success"
-          onClick={this.selectTool}
-          value={Tools.Pan}
-        ><i class="far fa-hand-rock"></i>
-          Grab it
+            <Button
+              className="btn btn-success"
+              onClick={this.selectTool}
+              value={Tools.Pan}
+            ><i class="far fa-hand-rock"></i>
+              Grab it
         </Button>
 
-        <Button
-          className="btn btn-primary"
-          onClick={this.selectTool}
-          value={Tools.Select}
-        ><i class="far fa-hand-pointer"></i>
-          Select and resize.
+            <Button
+              className="btn btn-primary"
+              onClick={this.selectTool}
+              value={Tools.Select}
+            ><i class="far fa-hand-pointer"></i>
+              Select and resize.
         </Button>
 
-        <input type="range" name="points" min="0" max="10"></input>
+            <input type="range" name="points" min="0" max="10"></input>
 
             <CompactPicker
               color={this.state.lineColor}
@@ -234,34 +232,25 @@ class TagArea extends React.Component {
           </Modal.Footer>
         </Modal>
 
-        <Button onClick={this.showTools}><i class="fas fa-toolbox"></i>ToolBox</Button>
+        {/* <Button onClick={this.showTools} style={{borderRadius: "150px"}}><i class="fas fa-pencil-alt"></i></Button> */}
 
 
 
 
 
 
-        
 
-        <button className="btn btn-success" onClick={this.undo}>
-          Undo
+
+        <button className="btn btn-success" onClick={this.undo} style={{ borderRadius: "150px" }}>
+          <i class="fas fa-undo"></i>
         </button>
-        <button className="btn btn-primary" onClick={this.redo}>
-          Redo
-        </button>
-
-        <button className="btn btn-success" onClick={this.save}>
-          Save it!
+        <button className="btn btn-primary" onClick={this.redo} style={{ borderRadius: "150px" }}>
+          <i class="fas fa-redo"></i>
         </button>
 
-        <button
-          id="download"
-          classnName="btn btn-danger"
-          onClick={this.download}
-        >
-          Download
+        <button className="btn btn-success" onClick={this.save} style={{ borderRadius: "150px" }}>
+          <i class="far fa-save"></i>
         </button>
-
 
       </div>
     );

@@ -37,7 +37,10 @@ function MapDiv(props) {
 
               <Modal show={show} onHide={handleClose}>
                 <Modal.Body>
+                  <div style={{maxWidth: "100%", maxHeight: "100%"}}>
+                    <img></img>
                   {/* script to bring photo here */}
+                  </div>
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose}>
