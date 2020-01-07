@@ -1,21 +1,14 @@
 const User = require("../models/user");
 const Image = require("../models/image")
 const auth = require("../authentication")
+const path = require("path");
+const router = require("express").Router();
 
-const express = require("express");
-const app = express();
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-const PORT = 3000;
-
-module.exports = function () {
 
 // #region READ / GET ---
 
   // admin path to check all users
-  app.get("/api/users", (req, res) => {
+  router.get("/api/users", (req, res) => {
     // get all users in the db
     User.find({})
       .then(dbUser => {
@@ -28,7 +21,7 @@ module.exports = function () {
   });
 
   // generic path to get any needed information about a single user
-  app.get("/api/users/:id", (req, res) => {
+  router.get("/api/users/:id", (req, res) => {
     User.findOne({ _id: req.params.id })
       // add reference to any images the user has made
       .populate("image")
@@ -43,7 +36,7 @@ module.exports = function () {
   });
 
   // path to return data on a single image
-  app.get("/api/images/:id", (req, res) => {
+  router.get("/api/images/:id", (req, res) => {
     Image.findOne({ _id: req.params.id })
       .then(dbImage => {
         // if we get data back, pass to client
@@ -56,7 +49,7 @@ module.exports = function () {
   });
 
   // path to return all images for a single user
-  app.get("/api/users/:id/gallery", (req, res) => {
+  router.get("/api/users/:id/gallery", (req, res) => {
     Image.find({ _id: req.params.id })
       .then(dbImage => {
         // if we get data back, pass to client
@@ -69,7 +62,7 @@ module.exports = function () {
   });
 
   // get nearby images
-  app.get("/api/images/nearby", function (req, res) {
+  router.get("/api/images/nearby", (req, res) => {
     Image.find({})
       .then(dbImage => {
         // If all images are successfully found, send them back to the client
@@ -86,7 +79,7 @@ module.exports = function () {
 // #region CREATE / POST ---
 
   // new user: get plaintext from client, send to firebase, make new local object
-  app.post("/api/users/new", (req, res) => {
+  router.post("/api/users/new", (req, res) => {
     const userObject = req.body;
     // tell firebase to make a new user, and save the uid it creates
     const newID = auth.handleNewUser(userObject.email, userObject.password);
@@ -107,7 +100,7 @@ module.exports = function () {
   });
 
   // login existing user
-  app.post("/api/users/login", (req, res) => {
+  router.post("/api/users/login", (req, res) => {
     // TODO: add complicated logic to check username or user email against local database, allowing users to login with username or email
 
     const userObject = req.body;
@@ -115,7 +108,7 @@ module.exports = function () {
   });
 
   // create new image entry
-  app.post("/api/images/new", (req, res) => {
+  router.post("/api/images/new", (req, res) => {
     const imageObject = req.body;
 
     Image.create({
@@ -138,7 +131,7 @@ module.exports = function () {
 // #region UPDATE / PUT ---
 
   // iterate nsfw count
-  app.put("/api/images/:id/nsfw", (req, res) => {
+  router.put("/api/images/:id/nsfw", (req, res) => {
     // Find all Users
     Image.update(
       { _id: req.params.id },
@@ -160,7 +153,7 @@ module.exports = function () {
   });
 
   // add upvote & extend image life
-  app.put("/api/images/:id/upvote", (req, res) => {
+  router.put("/api/images/:id/upvote", (req, res) => {
     // Find all Users
     Image.update(
       { _id: req.params.id },
@@ -182,7 +175,7 @@ module.exports = function () {
   });
 
   //change/update user info
-  app.put(`/api/users/:id/update`, function (req, res) {
+  router.put(`/api/users/:id/update`, (req, res) => {
     // Find all Users
     User.find({})
       .then(dbUser => {
@@ -194,13 +187,12 @@ module.exports = function () {
       });
   });
 
-
   // #endregion
 
 // #region DELETE ---
 
   // admin route to delete user
-  app.delete("/api/users/:id/delete", (req, res) => {
+  router.delete("/api/users/:id/delete", (req, res) => {
     User.destroy({ where: { userIndex: req.params.id } }).then( // needs to be converted for Mongoose
       dbUserRemoval => {
         res.json(dbUserRemoval);
@@ -209,7 +201,7 @@ module.exports = function () {
   });
 
   // route to delete image
-  app.delete("/api/images/:id/delete", (req, res) => {
+  router.delete("/api/images/:id/delete", (req, res) => {
     Image.destroy({ where: { publicIndex: req.params.id } }).then( // needs to be converted for Mongoose
       dbImageRemoval => {
         res.json(dbImageRemoval);
@@ -217,11 +209,11 @@ module.exports = function () {
     );
   });
 
-  app.listen(PORT, function () {
-    console.log("App running on port " + PORT + "!");
-  });
-
   // #endregion
 
-  //script that runs on start up and checks to see if anything in databas and if isn't should function
-};
+  // send all other routes to react
+  router.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  });
+
+  module.exports = router
