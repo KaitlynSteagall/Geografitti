@@ -1,10 +1,5 @@
-const mongoose = require("mongoose");
-const db = require("../models");
-
-mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost/db_geograffiti"
-);
+const User = require("../models/user");
+const Image = require("../models/image");
 
 // create an array of images we can match to our users
 const imageSeed = [
@@ -60,24 +55,24 @@ const userSeed = [
   },
 ];
 
-// create a function that loops through users, creating db.user entry and pairing a new db.image entry for each
+// create a function that loops through users, creating User entry and pairing a new Image entry for each
 function seedSomeData() {
 
   // drop databases
-  db.User
+  User
     .remove({})
-  db.Image
+  Image
     .remove({})
 
   // loop user array, starting at 1 because admin has no associated images
   for (let i = 1; i < userSeed.length; i++) {
     const imageObject = imageSeed[i];
     console.log(`trying to create user from `, userSeed[i])
-    db.User.create(userSeed[i])
+    User.create(userSeed[i])
       .then(data => {
         imageObject.imageAuthor = data._id;
         console.log(`User created: `, data, `trying to create image `, imageObject);
-        db.Image.create(imageObject)
+        Image.create(imageObject)
           .then(data => {
             console.log(`Image created: `, data)
           });
@@ -85,4 +80,18 @@ function seedSomeData() {
   }
 }
 
-module.exports = seedSomeData;
+// create a function that checks for a full database & creates one if nonexistent
+function checkForDatabase() {
+  console.log(`successfully called seedDB export`);
+  User.find({ firebaseID: `zHORwlltDVc95KJgPJlT8hPH04g1` })
+    .then(data => {
+      if (!data) {
+        seedSomeData();
+      }
+      else {
+        console.log(data.displayName);
+      }
+    });
+};
+
+module.exports = checkForDatabase;
