@@ -24,7 +24,7 @@ class EditUser extends React.Component {
         <div
           style={{
             position: 'fixed',
-            background: '#ff7d00',
+            background: 'rgba(255, 125, 0, 0.72)',
             width: '100%',
             height: '100%',
             top: 0,

@@ -18,11 +18,11 @@ function Photo(props) {
 
   return (
     <>
-      <Button variant="secondary" onClick={handleShow}> 
-        <i class="fas fa-camera"></i> Pic the target
+      <Button variant="secondary" onClick={handleShow} style={{borderRadius: "150px"}}> 
+        <i class="fas fa-camera"></i>
       </Button>
 
-      <Modal show={show} onHide={handleClose} dialogClassName="modal-90w" size='lg'>
+      <Modal show={show} onHide={handleClose}>
         {/* <Modal.Header closeButton></Modal.Header> */}
         <Modal.Body>
           <Camera
@@ -33,6 +33,7 @@ function Photo(props) {
             imageType={IMAGE_TYPES.PNG}
             isImageMirror={true}
             isMaxResolution={true}
+            idealResolution={{width: "100vw", height: "100vh"}}
             isSilentMode={true}
             imageCompression={0}
             isFullScreen={true}
