@@ -16,7 +16,7 @@ class TagArea extends React.Component {
     backgroundColor: "transparent",
     shadowWidth: 10,
     shadowOffset: 10,
-    tool: Tools.Pencil,
+    tool: Tools.Circle,
     enableRemoveSelected: false,
     fillWithColor: true,
     fillWithBackgroundColor: false,
@@ -74,14 +74,14 @@ class TagArea extends React.Component {
   };
 
   selectTool = event => {
-    console.log("modal reaching here")
+    
     this.setState({
       tool: event.target.value,
       enableRemoveSelected: event.target.value === Tools.Select,
       enableCopyPaste: event.target.value === Tools.Select,
       
     });
-    console.log('and now here')
+    console.log(this.state.tool)
   };
 
   undo = () => {
@@ -187,40 +187,30 @@ class TagArea extends React.Component {
         
         <Modal show={this.state.show}
         handleClose={this.goAway}>
+
+          {/* Tools themselves */}
           <Modal.Body>
-          <Button
-          className="btn btn-success"
+          <button
+          variant="secondary"
           onClick={this.selectTool}
           value={Tools.Line}
         >
           <i class="fas fa-grip-lines"></i>
-        </Button>
+        </button>
 
-        <Button
+        <button
           className="btn btn-primary"
           onClick={this.selectTool}
           value={Tools.Pencil}
         >
           <i class="fas fa-pencil-alt"></i>
-        </Button>
+        </button>
 
-        <Button
-          variant="Secondary"
-          onClick={this.selectTool}
-          value={Tools.Circle}
-        >
-          <i class="far fa-circle"></i>
-        </Button>
+        
 
-        <Button
-          className="btn btn-primary"
-          onClick={this.selectTool}
-          value={Tools.Rectangle}
-        >
-          <i class="fas fa-vector-square"></i>
-        </Button>
+        
 
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange"></input>
+        
 
         <CompactPicker
           color={this.state.lineColor}
@@ -242,7 +232,13 @@ class TagArea extends React.Component {
         
 
         
-          
+        <button
+          className="btn btn-primary"
+          onClick={this.selectTool}
+          value={Tools.Rectangle}
+        >
+          <i class="fas fa-vector-square"></i>
+        </button>
 
         
 
