@@ -152,12 +152,13 @@ class TagArea extends React.Component {
           id="tagArea"
           className="canvas-area"
           ref={c => (this.tag = c)}
-          width="100%"
-          height="100%"
+          width="700px"
+          height="500px"
           tool={this.state.tool}
           lineColor={this.state.lineColor}
           onChange={this.onTagChange}
           fillColor={this.state.fillColor}
+          lineWidth={this.state.lineWidth}
         />
         <Photo
           handlePhotoDataUrl={this.props.handlePhotoDataUrl}
@@ -217,7 +218,14 @@ class TagArea extends React.Component {
             ><i class="far fa-hand-pointer"></i> Select and resize.
             </button>
 
-            <input className="ml-4 mt-4" type="range" name="points" min="0" max="10"></input>
+            <input className="ml-4 mt-4" type="range" name="points" min="0" max="10"
+
+            step={1} min={0} max={100}
+            aria-labelledby="slider"
+            value={this.state.lineWidth}
+            onChange={(e, v) =>
+              this.setState({ lineWidth: v })
+            }></input>
 
             <CompactPicker
               className="mt-2 px-3 ml-4 mr-3"
