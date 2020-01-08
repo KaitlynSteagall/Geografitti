@@ -3,11 +3,13 @@ import { SketchField, Tools } from "react-sketch";
 import { CompactPicker } from "react-color";
 import Photo from "../Camera/index";
 import { Modal } from "react-bootstrap";
-import "../../components/Canvas/style.css"
+import "../../components/Canvas/style.css"; 
+import API from "../../scripts/apiRoutes"
+
 
 class TagArea extends React.Component {
   state = {
-    lineWidth: 10,
+    lineWidth: 100,
     lineColor: "black",
     fillColor: "transparent",
     backgroundColor: "transparent",
@@ -41,11 +43,12 @@ class TagArea extends React.Component {
   };
 
   save = () => {
+    let tag = this.tag; 
     let drawings = this.state.drawings;
     drawings.push(this.tag.toDataURL());
     this.setState({ drawings: drawings });
-    console.log(drawings);
-    // Need to add the post route here!
+    API.createNewImage(drawings); 
+    
   };
 
   something = () => {
@@ -219,7 +222,7 @@ class TagArea extends React.Component {
             </button>
 
             <input className="ml-4 mt-4" type="range" name="points" min="0" max="10"
-
+            label="Line Weight"
             step={1} min={0} max={100}
             aria-labelledby="slider"
             value={this.state.lineWidth}
