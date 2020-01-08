@@ -3,13 +3,11 @@ import { SketchField, Tools } from "react-sketch";
 import { CompactPicker } from "react-color";
 import Photo from "../Camera/index";
 import { Modal } from "react-bootstrap";
-import "../../components/Canvas/style.css"; 
-import API from "../../scripts/apiRoutes"
-
+import "../../components/Canvas/style.css"
 
 class TagArea extends React.Component {
   state = {
-    lineWidth: 100,
+    lineWidth: 10,
     lineColor: "black",
     fillColor: "transparent",
     backgroundColor: "transparent",
@@ -24,8 +22,8 @@ class TagArea extends React.Component {
     canRedo: false,
     controlledSize: false,
     imageURL: "",
-    sketchWidth: 600,
-    sketchHeight: 600,
+    sketchWidth: 400,
+    sketchHeight: 500,
     stretched: true,
     stretchedX: false,
     stretchedY: false,
@@ -43,12 +41,11 @@ class TagArea extends React.Component {
   };
 
   save = () => {
-    let tag = this.tag; 
     let drawings = this.state.drawings;
     drawings.push(this.tag.toDataURL());
     this.setState({ drawings: drawings });
-    API.createNewImage(drawings); 
-    
+    console.log(drawings);
+    // Need to add the post route here!
   };
 
   something = () => {
@@ -155,13 +152,12 @@ class TagArea extends React.Component {
           id="tagArea"
           className="canvas-area"
           ref={c => (this.tag = c)}
-          width="700px"
-          height="500px"
+          height={this.state.sketchHeight}
+          width={this.state.sketchWidth}
           tool={this.state.tool}
           lineColor={this.state.lineColor}
           onChange={this.onTagChange}
           fillColor={this.state.fillColor}
-          lineWidth={this.state.lineWidth}
         />
         <Photo
           handlePhotoDataUrl={this.props.handlePhotoDataUrl}
@@ -221,14 +217,7 @@ class TagArea extends React.Component {
             ><i class="far fa-hand-pointer"></i> Select and resize.
             </button>
 
-            <input className="ml-4 mt-4" type="range" name="points" min="0" max="10"
-            label="Line Weight"
-            step={1} min={0} max={100}
-            aria-labelledby="slider"
-            value={this.state.lineWidth}
-            onChange={(e, v) =>
-              this.setState({ lineWidth: v })
-            }></input>
+            <input className="ml-4 mt-4" type="range" name="points" min="0" max="10"></input>
 
             <CompactPicker
               className="mt-2 px-3 ml-4 mr-3"
