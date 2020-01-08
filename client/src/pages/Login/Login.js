@@ -7,8 +7,8 @@ import API from "../../scripts/apiRoutes"
 export default function Login(props) {
   const [signIn, setSignIn] = useState("active-dx");
   const [signUp, setSignUp] = useState("inactive-dx");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("Insert eMail");
+  const [password, setPassword] = useState("Password");
 
   return (
     <div className='container' required={true}>
@@ -35,7 +35,9 @@ export default function Login(props) {
           required
           onChange={e => setPassword(e.target.value)}
         />
-        <input type='password' placeholder='Verify Password' required />
+        <input type='password' value={password} placeholder='Verify Password' required 
+          onChange={e => setPassword(e.target.value)}
+        />
         <button className="form-btn sx log-in w-100 "
           onClick={event => {
             event.preventDefault();
