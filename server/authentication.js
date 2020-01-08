@@ -29,6 +29,7 @@ module.exports = {
           displayName: `theTaggingTook`,
           email: email,
         });
+        console.log("signed in as" + newUserData.user.uid)
       })
       .catch(function (error) {
         console.log(`error ${error.code}: ${error.message}`);

@@ -1,8 +1,10 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 import React, { useState } from 'react';
 import './style.css';
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import API from "../../scripts/apiRoutes"
+import Menu from "../../pages/Menu"
+
 
 export default function Login(props) {
   const [signIn, setSignIn] = useState("active-dx");
@@ -88,7 +90,8 @@ export default function Login(props) {
             API.loginExistingUser({ email: email, password: password })
               .then(json => {
                 if (json.valid) {
-                  console.log(`server heard query and sent response`)
+                  console.log(`server heard query and sent response`);
+                  return <Route render={() =><Menu />} />
                 }
               })
           }}
