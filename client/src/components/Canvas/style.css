@@ -1,6 +1,13 @@
+.btn{
+  background-color: rgba(238, 238, 238, 0.877);
+  margin-bottom: 5px
+}
+
+.tool-btn{
+  width: 100%;
+}
+
 .canvas-area{
-  border: 1px solid;
-  border-color: blue;
   margin: 0px; 
   margin-left: 0px; 
 }

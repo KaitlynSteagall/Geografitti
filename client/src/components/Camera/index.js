@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Camera, { FACING_MODES, IMAGE_TYPES } from "react-html5-camera-photo";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import "react-html5-camera-photo/build/css/index.css";
 import "./Camera.css"; 
 
@@ -18,12 +18,11 @@ function Photo(props) {
 
   return (
     <>
-      <Button variant="secondary" onClick={handleShow} style={{borderRadius: "150px"}}> 
+      <button className="btn" variant="secondary" onClick={handleShow} style={{borderRadius: "150px"}}> 
         <i class="fas fa-camera"></i>
-      </Button>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
-        {/* <Modal.Header closeButton></Modal.Header> */}
         <Modal.Body>
           <Camera
             idealFacingMode={FACING_MODES.ENVIRONMENT}
@@ -40,9 +39,9 @@ function Photo(props) {
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <button className="btn" variant="secondary" onClick={handleClose}>
             Close
-          </Button>
+          </button>
         </Modal.Footer>
       </Modal>
     </>
