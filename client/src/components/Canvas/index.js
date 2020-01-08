@@ -2,7 +2,8 @@ import React from "react";
 import { SketchField, Tools } from "react-sketch";
 import { CompactPicker } from "react-color";
 import Photo from "../Camera/index";
-import { Button, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import "../../components/Canvas/style.css"
 
 class TagArea extends React.Component {
   state = {
@@ -146,7 +147,7 @@ class TagArea extends React.Component {
   render() {
     console.log(this.props.dataPhotoUrl, "thats where photo data is");
     return (
-      <div className="container col-lg-12">
+      <div className="container">
         <SketchField
           id="tagArea"
           className="canvas-area"
@@ -158,100 +159,92 @@ class TagArea extends React.Component {
           onChange={this.onTagChange}
           fillColor={this.state.fillColor}
         />
-
         <Photo
           handlePhotoDataUrl={this.props.handlePhotoDataUrl}
           onClose={this.something}
+          width="100%"
+          height="100%"
         //  value={this.props.handlePhotoDataUrl}
         />
 
+        <button text="Testbutton" className="btn" style={{ borderRadius: "150px" }} onClick={this.something}><i class="far fa-image"></i> Display Your Image</button>
 
-        <Button text="Testbutton" onClick={this.something} ><i class="far fa-image"></i>Set your tag area</Button>
-        <Button onClick={this.showTools} onClick={this.showTools} style={{ borderRadius: "150px" }}><i class="fas fa-pencil-alt"></i></Button>
+        <button className="btn" onClick={this.showTools} style={{ borderRadius: "150px" }}><i class="fas fa-pencil-alt"></i></button>
 
         <Modal show={this.state.show} >
           <Modal.Body>
-
-            <Button
-              className="btn btn-primary"
+            <button
+              className="btn tool-btn"
               onClick={this.selectTool}
               value={Tools.Circle}><i class="far fa-circle"></i> Circle
-            </Button>
+            </button>
 
-            <Button
+            <button
+              className="btn tool-btn"
               variant="secondary"
               onClick={this.selectTool}
               value={Tools.Pencil}
-            ><i class="fas fa-pencil-alt"></i>Pencil
-            </Button>
+            ><i class="fas fa-pencil-alt"></i> Pencil
+            </button>
 
-            <Button
+            <button
+              className="btn tool-btn"
               variant="secondary"
               onClick={this.selectTool}
               value={Tools.Rectangle}
-            ><i class="far fa-square"></i>
-              Rectangle
-        </Button>
+            ><i class="far fa-square"></i> Rectangle
+            </button>
 
-            <Button
+            <button
+              className="btn tool-btn"
               variant="secondary"
               onClick={this.selectTool}
               value={Tools.Line}
-            >
-              Line
-        </Button>
+            ><i class="fas fa-draw-polygon"></i> Line
+            </button>
 
-            <Button
-              className="btn btn-success"
+            <button
+              className="btn tool-btn"
               onClick={this.selectTool}
               value={Tools.Pan}
-            ><i class="far fa-hand-rock"></i>
-              Grab it
-        </Button>
+            ><i class="far fa-hand-rock"></i> Grab it
+            </button>
 
-            <Button
-              className="btn btn-primary"
+            <button
+              className="btn tool-btn"
               onClick={this.selectTool}
               value={Tools.Select}
-            ><i class="far fa-hand-pointer"></i>
-              Select and resize.
-        </Button>
+            ><i class="far fa-hand-pointer"></i> Select and resize.
+            </button>
 
-            <input type="range" name="points" min="0" max="10"></input>
+            <input className="ml-4 mt-4" type="range" name="points" min="0" max="10"></input>
 
             <CompactPicker
+              className="mt-2 px-3 ml-4 mr-3"
               color={this.state.lineColor}
               value={this.state.lineColor}
               onChange={color => this.setState({ lineColor: color.hex })}
             />
 
-
           </Modal.Body>
+
           <Modal.Footer>
-            <Button onClick={this.goAway}>Done</Button>
+            <button className="btn" onClick={this.goAway}>Done</button>
           </Modal.Footer>
         </Modal>
+        
 
-        {/* <Button onClick={this.showTools} style={{borderRadius: "150px"}}><i class="fas fa-pencil-alt"></i></Button> */}
-
-
-
-
-
-
-
-
-        <button className="btn btn-success" onClick={this.undo} style={{ borderRadius: "150px" }}>
+        <button className="btn" onClick={this.undo} style={{ borderRadius: "150px" }}>
           <i class="fas fa-undo"></i>
         </button>
-        <button className="btn btn-primary" onClick={this.redo} style={{ borderRadius: "150px" }}>
+
+        <button className="btn" onClick={this.redo} style={{ borderRadius: "150px" }}>
           <i class="fas fa-redo"></i>
         </button>
 
-        <button className="btn btn-success" onClick={this.save} style={{ borderRadius: "150px" }}>
+        <button className="btn" onClick={this.save} style={{ borderRadius: "150px" }}>
           <i class="far fa-save"></i>
         </button>
-
       </div>
     );
   }
