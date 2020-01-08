@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api'
 import { usePosition } from '../../scripts/usePosition';
 import { markerArray } from '../../scripts/markerHandlers'
-import { Modal, Button } from "react-bootstrap";
-
+import { Modal } from "react-bootstrap";
+import API from "../../scripts/apiRoutes";
 
 function MapDiv(props) {
-
+  const [imgSource, setImgSource ] = useState("https://images.unsplash.com/photo-1519145897500-869c40ccb024?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80");
   const { latitude, longitude, error } = usePosition();
 
   return (
@@ -23,7 +23,13 @@ function MapDiv(props) {
         {markerArray().map(marker => {
           const [show, setShow] = useState(false);
           const handleClose = () => setShow(false);
-          const handleShow = (event) => {setShow(true); console.log(`you clicked marker ${event.ya.target.title}!`);}
+          const handleShow = (event) => { 
+            setShow(true);
+            console.log(`you clicked marker ${event.ya.target.title}!`);
+            API.getSingleImage(event.ya.target.title).then(imageObj => {
+              setImgSource(imageObj.imageLocation);
+            })  
+          }
 
           return (
             <>
@@ -37,15 +43,19 @@ function MapDiv(props) {
 
               <Modal show={show} onHide={handleClose}>
                 <Modal.Body>
-                  <div style={{maxWidth: "100%", maxHeight: "100%"}}>
-                    <img></img>
-                  {/* script to bring photo here */}
+                  <div style={{ maxWidth: "100%", maxHeight: "100%" }}>
+                    <img src={imgSource} style={{ maxWidth: "100%", maxHeight: "100%" }}>
+                      
+                    </img>
+                    <button className="btn" style={{ borderRadius: "150px", color: "red" }}>
+                      <i class="fas fa-heart"></i>
+                    </button>
                   </div>
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose}>
+                  <button className="btn" variant="secondary" onClick={handleClose}>
                     Close
-                  </Button>
+                  </button>
                 </Modal.Footer>
               </Modal>
             </>
