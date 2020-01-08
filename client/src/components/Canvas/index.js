@@ -167,7 +167,7 @@ class TagArea extends React.Component {
         //  value={this.props.handlePhotoDataUrl}
         />
 
-        <button text="Testbutton" className="btn" style={{ borderRadius: "150px" }} onClick={this.something}><i class="far fa-image"></i>Display Your Image</button>
+        <button text="Testbutton" className="btn" style={{ borderRadius: "150px" }} onClick={this.something}><i class="far fa-image"></i> Display Your Image</button>
 
         <button className="btn" onClick={this.showTools} style={{ borderRadius: "150px" }}><i class="fas fa-pencil-alt"></i></button>
 
