@@ -1,13 +1,6 @@
 const firebase = require('firebase');
 require('dotenv').config();
-// import and connect database
-const mongoose = require("mongoose");
 const User = require("./models/user");
-
-mongoose.connect(
-  process.env.MONGODB_URI ||
-  "mongodb://localhost/db_geograffiti"
-);
 
 // authenticate and initialize firebase
 const firebaseConfig = {
