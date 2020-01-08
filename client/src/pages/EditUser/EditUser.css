@@ -1,0 +1,13 @@
+label{
+  font-size: 1em;
+  font-family: 'Dosis';
+  margin-top: 0.4em;
+}
+
+.topLabel{
+  margin-top: 0;
+}
+
+form {
+  left: 0;
+}
