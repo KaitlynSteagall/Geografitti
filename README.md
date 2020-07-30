@@ -7,7 +7,7 @@ This is a mobile image sharing app that allows users to draw virtual images on l
 Images naturally decay over time at a fixed pace. Users can increase the longevity of other people's images by adding a thumbs up/upvote type approval marker, allowing communities to create art together.
 
 # How Do I Use It?
-Hopefully, point the camera, push a button to approve, draw on your screen to draw.
+The app is currently [hosted at Heroku](https://grumpy-puffin-4289.herokuapp.com/). Create an account, take a picture, and start drawing!
 
 # Who Made It?
 Mars Getsoian, Marielle Ibarreta, Kaitlyn Steagall, Eric Zimmerman.
